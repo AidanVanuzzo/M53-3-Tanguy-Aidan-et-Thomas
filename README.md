@@ -15,7 +15,6 @@ First you need to get a copy of this repository, the best approach is to fork th
 <<<<<<< HEAD
 
 =======
-    Aïdan Thomas
 >>>>>>> 0a9c20f62c7d45b328e209748a98028cd43e446a
 ### 2. Setup your local workspace
 
