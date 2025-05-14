@@ -12,7 +12,7 @@ First you need to get a copy of this repository, the best approach is to fork th
     - Go to Settings
     - Collaborators and team
     - (Manage access) > Add people
-    Aïdan
+
 ### 2. Setup your local workspace
 
 Now, each team member can configure his/her local workspace.
