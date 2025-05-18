@@ -12,10 +12,10 @@ First you need to get a copy of this repository, the best approach is to fork th
     - Go to Settings
     - Collaborators and team
     - (Manage access) > Add people
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 
-=======
->>>>>>> 0a9c20f62c7d45b328e209748a98028cd43e446a
+=========
+>>>>>>>>> Temporary merge branch 2
 ### 2. Setup your local workspace
 
 Now, each team member can configure his/her local workspace.
