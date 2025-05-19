@@ -40,7 +40,7 @@ public class WorldMap {
         house.setDiscovered(true); // Point de départ de l'aventure je l'ai set au millieu de la map 3x3
         setLocation(1, 1, house);
 
-        Location castle = new Location("Castle", "Lord Gabor's Castle");
+        Location castle = new Location("Castle", "Lord Alberto's Castle");
         castle.setLocked(true); // il faut la foreign key de Gabor pour rentrer
         setLocation(2, 1, castle);
 
