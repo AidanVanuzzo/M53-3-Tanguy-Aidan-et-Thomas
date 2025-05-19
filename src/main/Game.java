@@ -8,7 +8,7 @@ public class Game {
     public Game() {
         System.out.println("Initializing game...");
         this.commandRegistry = new CommandRegistry();
-        this.worldMap = new WorldMap();
+        this.worldMap = new WorldMap(3,3);
     }
 
     public void run() {

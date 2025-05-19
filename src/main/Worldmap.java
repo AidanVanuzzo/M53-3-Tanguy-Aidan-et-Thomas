@@ -8,11 +8,11 @@ public class WorldMap {
     private int est;
     private int nord;
 
-    public WorldMap(/* int est, int nord */) {
-        /*
-         * this.est = est;
-         * this.nord = nord;
-         */
+    public WorldMap(int est, int nord) {
+        
+         this.est = est;
+         this.nord = nord;
+         
         this.map = new Location[est][nord];
         initializeMap();
     }
