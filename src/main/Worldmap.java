@@ -60,7 +60,7 @@ public class WorldMap {
         if (isInBounds(x, y)) {
             map[x][y] = location;
         } else {
-            System.out.println("the coordinates are out of bounds, " + x + " + " + y + " are out of bounds.");
+            System.out.println("Impossible to move there, " + x + " + " + y + " are out of bounds.");
         }
     }
 
