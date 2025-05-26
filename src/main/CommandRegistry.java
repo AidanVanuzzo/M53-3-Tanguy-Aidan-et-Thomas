@@ -7,17 +7,7 @@ import interfaces.ICommand;
 
 public class CommandRegistry {
 
-    /*
-    CMap map;
-    CMove move;
-    */
     private Map<String, ICommand> commands;
-
-
-    /*CommandRegistry() {
-        this.map = new CMap();
-        this.move = new CMove();
-    }*/
 
     CommandRegistry() {
         commands = new HashMap<>();
@@ -61,15 +51,22 @@ public class CommandRegistry {
     public void commandExecute() {
         java.util.Scanner scanner = new java.util.Scanner(System.in);
     
-        System.out.print("Entrez une commande : ");
-        String input = scanner.nextLine().toLowerCase();
+        while (true) {
+            System.out.print("Entrez une commande : ");
+            String input = scanner.nextLine().toLowerCase();
     
-        ICommand command = commands.get(input);
+            if (input.equals("quit")) {
+                System.out.println("Au revoir Boss !");
+                break;  // quitte la boucle et ferme le scanner
+            }
     
-        if (command != null) {
-            command.execute();
-        } else {
-            System.out.println("Commande invalide, essayez 'help'");
+            ICommand command = commands.get(input);
+    
+            if (command != null) {
+                command.execute();
+            } else {
+                System.out.println("Commande invalide, essayez 'help'");
+            }
         }
     
         scanner.close();
