@@ -12,7 +12,7 @@ public class Game {
 
     public Game() {
         this.worldMap = new WorldMap();
-        this.worldMap.setGame(this);  // Lien WorldMap -> Game
+        this.worldMap.setGame(this);
 
         startingLocation = worldMap.getLocation(playerX, playerY);
         player = new Player(startingLocation);
@@ -31,12 +31,15 @@ public class Game {
         return playerY;
     }
 
+    // Mise à jour de la position ET de la location du player
     public void setPlayerX(int x) {
         this.playerX = x;
+        player.setLocation(worldMap.getLocation(playerX, playerY));
     }
 
     public void setPlayerY(int y) {
         this.playerY = y;
+        player.setLocation(worldMap.getLocation(playerX, playerY));
     }
 
     public WorldMap getWorldMap() {
@@ -45,5 +48,12 @@ public class Game {
 
     public Location getCurrentLocation() {
         return player.getLocation();
+    }
+
+    // Optionnel : méthode pratique pour bouger le joueur
+    public void movePlayer(int newX, int newY) {
+        this.playerX = newX;
+        this.playerY = newY;
+        player.setLocation(worldMap.getLocation(playerX, playerY));
     }
 }

@@ -42,7 +42,7 @@ public class WorldMap {
 
     public void setLocation(int x, int y, Location location) {
         if (x >= 0 && x < est && y >= 0 && y < nord) {
-            map[x][y] = location;
+            map[y][x] = location;
         } else {
             System.out.println("Impossible to move there, " + x + ", " + y + " are out of bounds.");
         }
@@ -50,7 +50,7 @@ public class WorldMap {
 
     public Location getLocation(int x, int y) {
         if (x >= 0 && x < est && y >= 0 && y < nord) {
-            return map[x][y];
+            return map[y][x];
         }
         return null;
     }

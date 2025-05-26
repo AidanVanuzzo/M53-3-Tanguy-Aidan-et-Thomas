@@ -8,18 +8,20 @@ public class CLook implements ICommand {
     private Game game;
 
     public CLook(Game game) {
-        this.description = "Permet d'observer la zone actuelle.";
+        this.description = "Look around the actual zone.";
         this.game = game;
     }
 
     @Override
     public void execute() {
         Location current = game.getCurrentLocation();
+
         if (current != null) {
-            System.out.println("Vous regardez autour de vous...");
+            System.out.println("You look around...");
             System.out.println(current.getDescription());
+            // Ici tu pourras ajouter plus tard l'affichage des items s'il y en a
         } else {
-            System.out.println("Vous êtes perdu dans le néant.");
+            System.out.println("You are lost in the void.");
         }
     }
 
