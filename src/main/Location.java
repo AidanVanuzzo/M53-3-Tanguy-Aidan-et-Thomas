@@ -51,5 +51,5 @@ public class Location implements IPrintable {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'isGrayedOut'");
     }
-//testastos
+
 }

@@ -75,6 +75,10 @@ public class WorldMap {
         return x >= 0 && x < est && y >= 0 && y < nord;
     }
 
+    public Location[][]  getworldMap(){
+        return map;
+    }
+
     public void discoverLocation(int x, int y) {
         Location loc = getLocation(x, y);
         if (loc != null) {
