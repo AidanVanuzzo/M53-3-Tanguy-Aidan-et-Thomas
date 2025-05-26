@@ -18,4 +18,5 @@ public class CMap implements ICommand {
     public String getDescription() {
         return this.description;
     }
+
 }
