@@ -1,6 +1,8 @@
 package main;
 
-public class Location {
+import utils.IPrintable;
+
+public class Location implements IPrintable { 
 
     private String name;
     private String description;
@@ -38,4 +40,16 @@ public class Location {
         this.locked = locked;
     }
 
+    @Override
+    public String getPrintableString() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPrintableString'");
+    }
+
+    @Override
+    public boolean isGrayedOut() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isGrayedOut'");
+    }
+//testastos
 }
