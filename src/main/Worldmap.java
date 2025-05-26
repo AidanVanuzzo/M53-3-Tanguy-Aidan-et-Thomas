@@ -40,7 +40,7 @@ public class Worldmap {
     setLocation(1, 1, house);
 
     Location castle = new Location("Castle", "Lord Gabor's Castle");
-    castle.setLocked(true); //il faut la foreign key de Gabor pour rentrer
+    castle.setLocked(true); //il faut la foreign key de Gabor pour rentrer .
     setLocation(2, 1, castle);
 
     // Ligne 2
