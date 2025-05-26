@@ -21,7 +21,7 @@ public class Main {
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
 
         //Test Help
-        new CommandRegistry().commandExecute();
+    
     }
 
 

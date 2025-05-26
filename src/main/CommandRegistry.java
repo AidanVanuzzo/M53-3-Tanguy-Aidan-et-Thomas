@@ -19,10 +19,10 @@ public class CommandRegistry {
         this.move = new CMove();
     }*/
 
-    CommandRegistry() {
+    CommandRegistry(WorldMap worldMap) {
         commands = new HashMap<>();
         commands.put("move", new CMove());
-        commands.put("map", new CMap());
+        commands.put("map", new CMap(worldMap));
         commands.put("help", new CHelp(commands));
     }
     
