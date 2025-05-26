@@ -5,16 +5,16 @@ import interfaces.ICommand;
 public class CLook implements ICommand {
 
     private String description;
-    private CMove move;
+    private Game game;
 
-    public CLook(CMove move) {
+    public CLook(Game game) {
         this.description = "Permet d'observer la zone actuelle.";
-        this.move = move;
+        this.game = game;
     }
 
     @Override
     public void execute() {
-        Location current = move.getCurrentLocation();
+        Location current = game.getCurrentLocation();
         if (current != null) {
             System.out.println("Vous regardez autour de vous...");
             System.out.println(current.getDescription());

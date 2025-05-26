@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class CMove implements ICommand {
 
-    // private String verb;
     private String description;
+    private Game game;
 
-    CMove() {
+    CMove(Game game) {
         this.description = "Permet de se déplacer dans une direction cardinale (nord, sud, est, ouest).";
+        this.game = game;
     }
 
     public void execute() {
@@ -21,11 +22,6 @@ public class CMove implements ICommand {
         return this.description;
     }
 
-    //Default Location
-    private int x = 1;
-    private int y = 1;
-    private WorldMap worldMap = new WorldMap();
-
     public void movePlayer() {
 
         System.out.println("To go North, type 1");
@@ -34,14 +30,17 @@ public class CMove implements ICommand {
         System.out.println("To go West, type 4");
 
         Scanner scanner = new Scanner(System.in);
-        int direction = 0;
+        int direction;
 
         do {
             direction = scanner.nextInt();
-            if (direction > 4 || direction < 1) { 
-               System.out.println("You need to type a number beetween 1 - 4");
+            if (direction > 4 || direction < 1) {
+                System.out.println("You need to type a number between 1 - 4");
             }
         } while (direction > 4 || direction < 1);
+
+        int x = game.getPlayerX();
+        int y = game.getPlayerY();
 
         int newX = x;
         int newY = y;
@@ -53,15 +52,15 @@ public class CMove implements ICommand {
             case 4 -> newX--; // West
         }
 
-        Location nextLocation = worldMap.getLocation(newX, newY);
+        Location nextLocation = game.getWorldMap().getLocation(newX, newY);
 
         if (nextLocation == null) {
-            System.out.println("You can't go that way."); //OOB
+            System.out.println("You can't go that way.");
         } else if (nextLocation.isLocked()) {
-            System.out.println("Zone locked."); //Locked
+            System.out.println("Zone locked.");
         } else {
-            x = newX;
-            y = newY;
+            game.setPlayerX(newX);
+            game.setPlayerY(newY);
             System.out.println(nextLocation.getDescription());
         }
     }

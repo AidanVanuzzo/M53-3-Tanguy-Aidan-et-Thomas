@@ -5,49 +5,32 @@ import utils.Array2Dprinter;
 import utils.IPrintable;
 
 public class CMap implements ICommand {
-private WorldMap worldMap;
-    // private String verb;
+
+    private WorldMap worldMap;
     private String description;
 
-    CMap(WorldMap worldMap)  {
+    public CMap(WorldMap worldMap) {
         this.description = "Permet d'afficher la world map.";
-         this.worldMap = worldMap;
+        this.worldMap = worldMap;
     }
 
-  
+    @Override
+    public void execute() {
+        // Récupère la map sous forme d'IPrintable[][]
+        IPrintable[][] printableMap = worldMap.getWorldMap();
 
+        // Récupère la position du joueur via la référence Game
+        int playerX = worldMap.getGame().getPlayerX();
+        int playerY = worldMap.getGame().getPlayerY();
 
+        // Affiche la map en surlignant la position du joueur
+        String result = Array2Dprinter.print2DArray(printableMap, playerY, playerX);
 
-   @Override
-   public void execute() {
-   /*       int est = 3;
-        int nord = 3;
-        IPrintable[][] printableMap = new IPrintable[est][nord];
-
-        for (int x = 0; x < est; x++) {
-            for (int y = 0; y < nord; y++) {
-                printableMap[x][y] = worldMap.getLocation(x, y);
-            }
-        }*/
-
-        // surligne la position du player 
-        String result = Array2Dprinter.print2DArray(worldMap.getworldMap());
         System.out.println(result);
     }
-
-
-
-
-
 
     @Override
     public String getDescription() {
         return this.description;
     }
-
-
-
-
-
-    
 }

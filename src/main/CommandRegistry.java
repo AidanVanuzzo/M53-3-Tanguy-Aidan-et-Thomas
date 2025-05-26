@@ -4,72 +4,38 @@ import java.util.Map;
 import java.util.HashMap;
 import interfaces.ICommand;
 
-
 public class CommandRegistry {
 
-    /*
-    CMap map;
-    CMove move;
-    */
     private Map<String, ICommand> commands;
 
-
-    /*CommandRegistry() {
-        this.map = new CMap();
-        this.move = new CMove();
-    }*/
-
-    CommandRegistry(WorldMap worldMap) {
+    CommandRegistry(Game game) {
         commands = new HashMap<>();
-        commands.put("move", new CMove());
-        commands.put("map", new CMap(worldMap));
+        commands.put("move", new CMove(game));
+        commands.put("map", new CMap(game.getWorldMap()));
         commands.put("help", new CHelp(commands));
+        commands.put("look", new CLook(game));
     }
-    
-    /*
-    public void commandExecute() {
-
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
-
-        System.out.print("Entrez une commande : ");
-        String command = scanner.nextLine();
-
-        switch (command) {
-            case "Move":
-
-                move.execute();
-
-                break;
-
-            case "Map":
-
-                map.execute();
-
-                break;
-
-            default:
-
-                System.out.println("commande invalide, essayez la commande 'Help'");
-
-                break;
-        }
-
-        scanner.close();
-
-    }*/
 
     public void commandExecute() {
         java.util.Scanner scanner = new java.util.Scanner(System.in);
+        String input;
     
-        System.out.print("Entrez une commande : ");
-        String input = scanner.nextLine().toLowerCase();
+        while (true) {
+            System.out.print("Enter a command (or type 'quit' to exit): ");
+            input = scanner.nextLine().toLowerCase();
     
-        ICommand command = commands.get(input);
+            if (input.equals("quit")) {
+                System.out.println("Game over. See you next time");
+                break;
+            }
     
-        if (command != null) {
-            command.execute();
-        } else {
-            System.out.println("Commande invalide, essayez 'help'");
+            ICommand command = commands.get(input);
+    
+            if (command != null) {
+                command.execute();
+            } else {
+                System.out.println("Invalid command. Try 'help'.");
+            }
         }
     
         scanner.close();
