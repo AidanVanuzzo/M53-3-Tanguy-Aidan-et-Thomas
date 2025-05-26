@@ -15,6 +15,7 @@ public class CMap implements ICommand {
 
     }
 
+    @Override
     public String getDescription() {
         return this.description;
     }

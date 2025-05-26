@@ -1,5 +1,7 @@
 package interfaces;
 
 public interface ICommand {
-    public void execute();
+    void execute();
+    String getDescription();
 }
+

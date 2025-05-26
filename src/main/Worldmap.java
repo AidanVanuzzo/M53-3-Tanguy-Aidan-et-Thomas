@@ -8,14 +8,14 @@ public class WorldMap {
     private int est;
     private int nord;
 
-    public WorldMap(/* int est, int nord */) {
-        /*
-         * this.est = est;
-         * this.nord = nord;
-         */
+
+    public WorldMap() {
+        this.est = 3;
+        this.nord = 3;
         this.map = new Location[est][nord];
         initializeMap();
     }
+    
 
     private void initializeMap() {
         // C'est pour setup les location j'ai fait une petite map de 3x3 pour le début

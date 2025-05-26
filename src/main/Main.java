@@ -19,5 +19,10 @@ public class Main {
         Game game = new Game();
         game.run();
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
+
+        //Test Help
+        new CommandRegistry().commandExecute();
     }
+
+
 }

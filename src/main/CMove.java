@@ -16,6 +16,7 @@ public class CMove implements ICommand {
         movePlayer();
     }
 
+    @Override
     public String getDescription() {
         return this.description;
     }
