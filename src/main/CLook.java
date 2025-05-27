@@ -4,6 +4,8 @@ import interfaces.ICommand;
 
 public class CLook implements ICommand {
 
+    //Je commenterai cette classe une fois qu'elle fonctionnera avec les items
+
     private String description;
     private Game game;
 
@@ -24,6 +26,7 @@ public class CLook implements ICommand {
         }
     }
 
+    //Getter pour récupérer la description de la commande 'look'
     @Override
     public String getDescription() {
         return this.description;

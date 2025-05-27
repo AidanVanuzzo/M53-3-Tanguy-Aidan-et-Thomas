@@ -24,7 +24,7 @@ public class Game {
         player = new Player(startingLocation);
     }
     
-    //Méthodes avec getters et setters
+    //Méthodes, Getters et Setters -->
 
     //Affiche les instructions et attend les commandes du joueur
     public void run() {
