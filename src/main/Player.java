@@ -15,4 +15,3 @@ public class Player {
         this.currentLocation = location;
     }
 }
-

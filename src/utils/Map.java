@@ -1,8 +1,11 @@
 package utils;
 
 public class Map {
-// code trouvé sur internet et adapté par moi, ça fait des cases, si rien est entré il y a rien dans la case si c'est pas découvert il y a un mystère et si c'est découvert les premieres lettres apparaissent ca donne un damier 
-public void printMap() {
+
+//Je désactive temporairement car il y'a des erreurs avec le code actuel
+
+//Génère des cases, si rien est entré il y a rien dans la case si c'est pas découvert il y a un mystère et si c'est découvert les premieres lettres apparaissent ca donne un damier 
+/*public void printMap() {
     for (int y = 0; y < nord; y++) {
         for (int x = 0; x < est; x++) {
             Location loc = map[y][x];
@@ -16,7 +19,5 @@ public void printMap() {
         }
         System.out.println();
     }
-}
-
-
+}*/
 }
