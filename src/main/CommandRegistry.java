@@ -10,9 +10,9 @@ public class CommandRegistry {
 
     CommandRegistry(Game game) {
         commands = new HashMap<>();
+        commands.put("help", new CHelp(commands));
         commands.put("move", new CMove(game));
         commands.put("map", new CMap(game.getWorldMap()));
-        commands.put("help", new CHelp(commands));
         commands.put("look", new CLook(game));
     }
 
@@ -25,7 +25,7 @@ public class CommandRegistry {
             input = scanner.nextLine().toLowerCase();
     
             if (input.equals("quit")) {
-                System.out.println("Game over. See you next time");
+                System.out.println("Game over. See you next time :)");
                 break;
             }
     

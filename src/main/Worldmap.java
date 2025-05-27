@@ -6,7 +6,7 @@ public class WorldMap {
     private int est;
     private int nord;
 
-    private Game game;  // Référence vers le game
+    private Game game;
 
     public WorldMap() {
         this.est = 3;
@@ -15,18 +15,16 @@ public class WorldMap {
         initializeMap();
     }
 
-    // **Ajoute cette méthode sinon erreur undefined setGame**
     public void setGame(Game game) {
         this.game = game;
     }
 
-    // **Ajoute cette méthode pour récupérer le game**
     public Game getGame() {
         return this.game;
     }
 
     private void initializeMap() {
-        // Remplir ta map ici, par exemple :
+
         setLocation(0, 0, new Location("Bridge", "A calm wooden bridge above the river."));
         setLocation(1, 0, new Location("Farm", "A quiet farm with crops."));
         setLocation(2, 0, new Location("Cave", "A mysterious cave."));
@@ -55,7 +53,6 @@ public class WorldMap {
         return null;
     }
 
-    // **Attention : la méthode doit retourner IPrintable[][] pour Array2Dprinter**
     public Location[][] getWorldMap() {
         return map;
     }

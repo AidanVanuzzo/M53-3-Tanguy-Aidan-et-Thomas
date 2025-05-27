@@ -9,7 +9,7 @@ public class CMove implements ICommand {
     private Game game;
 
     CMove(Game game) {
-        this.description = "Permet de se déplacer dans une direction cardinale (nord, sud, est, ouest).";
+        this.description = "Allows you to move in a cardinal direction (north, south, east, west).";
         this.game = game;
     }
 

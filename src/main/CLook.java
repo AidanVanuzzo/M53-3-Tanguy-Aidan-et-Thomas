@@ -19,7 +19,6 @@ public class CLook implements ICommand {
         if (current != null) {
             System.out.println("You look around...");
             System.out.println(current.getDescription());
-            // Ici tu pourras ajouter plus tard l'affichage des items s'il y en a
         } else {
             System.out.println("You are lost in the void.");
         }

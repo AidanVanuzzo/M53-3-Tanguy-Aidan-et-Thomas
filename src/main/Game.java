@@ -31,7 +31,6 @@ public class Game {
         return playerY;
     }
 
-    // Mise à jour de la position ET de la location du player
     public void setPlayerX(int x) {
         this.playerX = x;
         player.setLocation(worldMap.getLocation(playerX, playerY));
@@ -50,7 +49,6 @@ public class Game {
         return player.getLocation();
     }
 
-    // Optionnel : méthode pratique pour bouger le joueur
     public void movePlayer(int newX, int newY) {
         this.playerX = newX;
         this.playerY = newY;

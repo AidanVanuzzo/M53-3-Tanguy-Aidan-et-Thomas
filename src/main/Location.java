@@ -42,12 +42,11 @@ public class Location implements IPrintable {
 
     @Override
     public String getPrintableString() {
-        return name;  // affiche juste le nom de la location dans la grille
+        return name;
     }
     
     @Override
     public boolean isGrayedOut() {
-        // griser si verrouillée ou non découverte
         return locked || !discovered;
     }
     

@@ -1,26 +1,17 @@
 package main;
 
-import examples.ConsoleStylingExample;
-import examples.StringManipulation;
-import utils.Color;
-import utils.StringStyling;
-import utils.Style;
-
 public class Main {
 
+    /*
+    Todo Dimache
+    1) Système d'objets (Ramasser/Inspecter)
+    2) Look : Modifier pour afficher les objets/énigmes de la zone
+    3) Mécanisme pour dévérouiller les zones
+    */
+
     public static void main(String[] args) {
-        // you can safely remove those examples lines
-        StringManipulation.Example();
-        ConsoleStylingExample.Example();
-        //UserInputExample.Example();
-
-        System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
         Game game = new Game();
-        game.run();
-        System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
-
-        //Test Help
-    
+        game.run();    
     }
 
 
