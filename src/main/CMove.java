@@ -7,10 +7,12 @@ public class CMove implements ICommand {
 
     private String description;
     private Game game;
+    private Scanner scanner;
 
     CMove(Game game) {
         this.description = "Allows you to move in a cardinal direction (north, south, east, west).";
         this.game = game;
+        this.scanner = new Scanner(System.in);
     }
 
     public void execute() {
@@ -29,7 +31,6 @@ public class CMove implements ICommand {
         System.out.println("To go East, type 3");
         System.out.println("To go West, type 4");
 
-        Scanner scanner = new Scanner(System.in);
         int direction;
 
         do {

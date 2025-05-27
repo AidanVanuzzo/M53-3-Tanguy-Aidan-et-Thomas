@@ -6,7 +6,7 @@ public class Game {
     private int playerX = 1;
     private int playerY = 1;
 
-    //Appel des éléments nécessaires au jeu
+    //Éléments nécessaires au fonctionnement du jeu
     private WorldMap worldMap;
     private CommandRegistry registry;
     private Player player;
