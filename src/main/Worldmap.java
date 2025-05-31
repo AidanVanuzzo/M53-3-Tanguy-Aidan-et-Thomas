@@ -74,7 +74,7 @@ public class WorldMap {
 
         // === Objets distracteurs ===
         Item farmJunk = new Item(
-            "a clean pitchfork",
+            "clean pitchfork",
             "Oddly shiny and completely clean. Nobody dares to touch it.",
             "Farm"
         );
