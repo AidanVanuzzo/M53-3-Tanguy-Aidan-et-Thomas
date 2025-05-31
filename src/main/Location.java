@@ -11,8 +11,14 @@ public class Location implements IPrintable {
     private boolean locked;
     private boolean discovered;
 
-    // [01.06.2025] Liste des objets dans cette zone
+    // Objets présents dans la zone
     private List<Item> items;
+
+    // PNJ et énigme associés à la zone
+    private String npcName;
+    private String npcIntro;
+    private boolean puzzleActive;
+    private Item rewardItem;
 
     // Constructeur
     public Location(String name, String description) {
@@ -21,9 +27,13 @@ public class Location implements IPrintable {
         this.locked = false;
         this.discovered = false;
         this.items = new ArrayList<>();
+        this.npcName = null;
+        this.npcIntro = null;
+        this.puzzleActive = false;
+        this.rewardItem = null;
     }
 
-    // Getters et setters
+    // Getters et setters de base
     public String getName() {
         return name;
     }
@@ -48,17 +58,15 @@ public class Location implements IPrintable {
         this.locked = locked;
     }
 
-    // [01.06.2025] Ajoute un objet à cette zone
+    // Gestion des objets
     public void addItem(Item item) {
         items.add(item);
     }
 
-    // [01.06.2025] Retourne la liste des objets présents dans la zone
     public List<Item> getItems() {
         return items;
     }
 
-    // [01.06.2025] Retire un objet par son nom et le retourne (sinon null)
     public Item removeItemByName(String name) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -69,7 +77,39 @@ public class Location implements IPrintable {
         return null;
     }
 
-    // Méthodes de l’interface IPrintable
+    // Gestion du PNJ et de l'énigme
+    public void setNpcPuzzle(String npcName, String npcIntro, Item rewardItem) {
+        this.npcName = npcName;
+        this.npcIntro = npcIntro;
+        this.rewardItem = rewardItem;
+        this.puzzleActive = true;
+    }
+
+    public boolean hasNpc() {
+        return npcName != null;
+    }
+
+    public String getNpcName() {
+        return npcName;
+    }
+
+    public String getNpcIntro() {
+        return npcIntro;
+    }
+
+    public boolean isPuzzleActive() {
+        return puzzleActive;
+    }
+
+    public Item getRewardItem() {
+        return rewardItem;
+    }
+
+    public void completePuzzle() {
+        this.puzzleActive = false;
+    }
+
+    // Méthodes d'affichage de la carte
     @Override
     public String getPrintableString() {
         if (discovered) {

@@ -46,4 +46,11 @@ public class Player {
         }
         return null;
     }
+
+    // Ajoute cette méthode dans ta classe Player
+
+    public String getName() {
+        return "Player"; // Ou retourne un vrai nom si tu veux le personnaliser plus tard
+    }
+
 }

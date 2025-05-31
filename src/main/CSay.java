@@ -11,7 +11,7 @@ public class CSay implements ICommand {
 
     public CSay(Game game) {
         this.game = game;
-        this.description = "Allows you to take objects using 'take <object name>'.";
+        this.description = "Allows you to take objects or talk using 'take <name>'.";
         this.scanner = new Scanner(System.in);
     }
 
@@ -23,6 +23,52 @@ public class CSay implements ICommand {
         if (input.startsWith("take ")) {
             String itemName = input.substring(5).trim();
             Location current = game.getCurrentLocation();
+
+            // === Cas spécial : PNJ avec énigme ===
+            if (current.hasNpc() && current.isPuzzleActive()) {
+                String npcName = current.getNpcName().toLowerCase();
+                String npcFirst = npcName.split(" ")[0]; // ex: "tonton" depuis "Tonton Eleganza"
+
+                if (itemName.equals(npcName) || itemName.equals(npcFirst)) {
+                    System.out.println(current.getNpcIntro());
+
+                    int target = (int) (Math.random() * 11);
+                    boolean success = false;
+
+                    while (!success) {
+                        System.out.print("Your guess (0–10): ");
+                        String guessInput = scanner.nextLine().trim();
+
+                        try {
+                            int guess = Integer.parseInt(guessInput);
+                            if (guess == target) {
+                                success = true;
+                                System.out.println();
+                                System.out.println("Bravo " + game.getPlayer().getName() + "! You truly are your uncle’s heir.");
+                                System.out.println("Take my card, go grab something to eat. It’s nearly lunchtime.");
+                                System.out.println("Go shine, my nephew. Elegance is power.");
+                                System.out.println();
+
+                                Item reward = current.getRewardItem();
+                                if (reward != null) {
+                                    game.getPlayer().addItem(reward);
+                                    System.out.println("[You received: " + reward.getName() + "]");
+                                }
+
+                                current.completePuzzle();
+                            } else {
+                                System.out.println("No, my dear, I was hiding " + target + ". But don’t worry, let’s try again.");
+                                target = (int) (Math.random() * 11); // Nouvelle tentative
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Please enter a valid number.");
+                        }
+                    }
+                    return;
+                }
+            }
+
+            // === Cas normal : prise d’objet dans la zone ===
             Item item = current.removeItemByName(itemName);
             if (item != null) {
                 game.getPlayer().addItem(item);
@@ -30,9 +76,9 @@ public class CSay implements ICommand {
                 System.out.println("You picked up: " + item.getName());
                 System.out.println();
 
-                // [01.06.2025] Déverrouille la tour du sorcier si on prend massomo
+                // Cas spécial : Massomo déverrouille Wizard's Lair
                 if (item.getName().equalsIgnoreCase("massomo")) {
-                    Location wizardLair = game.getWorldMap().getLocation(2, 2); // Wizard's Lair coordonnée (2,2)
+                    Location wizardLair = game.getWorldMap().getLocation(2, 2);
                     if (wizardLair != null && wizardLair.isLocked()) {
                         wizardLair.setLocked(false);
                         System.out.println("[The wise man disappeared, leaving a note: Meet me in my tower and I will teach you my power.]");
@@ -41,11 +87,10 @@ public class CSay implements ICommand {
                 }
 
             } else {
-                System.out.println("There is no such item here.");
+                System.out.println("There is no such item or character here.");
             }
         } else {
-            System.out.println("Invalid format.");
-            System.out.println();
+            System.out.println("Invalid format. Use: take <name>");
         }
     }
 
