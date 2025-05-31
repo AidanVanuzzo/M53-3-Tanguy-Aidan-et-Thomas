@@ -18,30 +18,30 @@ public class CInventory implements ICommand {
 
     @Override
     public void execute() {
-        // [01.06.2025] Détection d'exécution simple (si tapé comme 'inventory' uniquement)
         List<Item> items = game.getPlayer().getInventory();
         if (items.isEmpty()) {
             System.out.println();
             System.out.println("Your inventory is empty.");
-            return; // Ne rentre pas dans le menu
         } else {
             System.out.println();
-            System.out.println("Inventory:");
+            System.out.println("Inventory: (type 'exit' to close)");
             for (Item item : items) {
                 System.out.println();
                 System.out.println(" - " + item.getName());
             }
             System.out.println();
-            return; // Stoppe ici sans afficher le menu
+            // Lance le menu interactif automatiquement
+            interactiveMenu();
         }
     }
 
-    // [01.06.2025] Méthode facultative si tu veux un menu avancé plus tard
+
     public void interactiveMenu() {
         System.out.println("Type 'inspect <item>' or 'use <item>' (type 'exit' to leave):");
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().toLowerCase().trim();
+            System.out.println();
 
             if (input.equals("exit")) {
                 break;
@@ -57,8 +57,31 @@ public class CInventory implements ICommand {
                 String itemName = input.substring(4).trim();
                 Item item = game.getPlayer().getItemByName(itemName);
                 if (item != null) {
-                    System.out.println("You try to use the " + item.getName() + "...");
-                    System.out.println("Nothing happens. Maybe it doesn't work here.");
+                    if (item.getName().equalsIgnoreCase("vip card")) {
+                        int x = game.getPlayerX();
+                        int y = game.getPlayerY();
+                        WorldMap map = game.getWorldMap();
+
+                        boolean isNearBurgerKing =
+                            (x == 0 && y == 0) || // Bridge
+                            (x == 1 && y == 1) || // House
+                            (x == 0 && y == 2);   // Market
+
+                        Location burgerKing = map.getLocation(0, 1);
+                        if (isNearBurgerKing) {
+                            if (burgerKing != null && burgerKing.isLocked()) {
+                                burgerKing.setLocked(false);
+                                System.out.println("\nBEEP... The VIP card granted you access. The heavy door slides open with a hiss.\n");
+                            } else {
+                                System.out.println("The Burger King is already unlocked.");
+                            }
+                        } else {
+                            System.out.println("\nThis object cannot be used here.\n");
+                        }
+                    } else {
+                        System.out.println("You try to use the " + item.getName() + "...");
+                        System.out.println("Nothing happens. Maybe it doesn't work here.");
+                    }
                 } else {
                     System.out.println("You don’t have this item.");
                 }

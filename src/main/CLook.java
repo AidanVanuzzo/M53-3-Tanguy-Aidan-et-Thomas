@@ -5,8 +5,6 @@ import java.util.List;
 
 public class CLook implements ICommand {
 
-    //Je commenterai cette classe une fois qu'elle fonctionnera avec les items
-
     private String description;
     private Game game;
 
@@ -26,17 +24,16 @@ public class CLook implements ICommand {
             System.out.println(current.getDescription());
             System.out.println();
 
-            // [01.06.2025] Affiche les objets présents dans la zone
             List<Item> items = current.getItems();
             if (!items.isEmpty()) {
-                System.out.println("You see the following items:");
+                System.out.println("You see the following items/PNJ:");
                 for (Item item : items) {
                     System.out.println();
-                    System.out.println(" - " + item.getName() + ": " + item.getDescription());
+                    System.out.println(" - " + item.getName()); // ✅ affiche uniquement le nom
                 }
                 System.out.println();
             } else {
-                System.out.println("There are no visible items here.");
+                System.out.println("There are no visible items/PNJ here.");
                 System.out.println();
             }
         } else {

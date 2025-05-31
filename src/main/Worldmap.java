@@ -43,30 +43,26 @@ public class WorldMap {
         setLocation(2, 2, new Location("Wizard's Lair", "[The tower of Massamo the great wizard.]"));
 
         // === Zones verrouillées par défaut ===
-        getLocation(1, 0).setLocked(true); // Burger King
+        getLocation(0, 1).setLocked(true); // Burger King
         getLocation(2, 1).setLocked(true); // Castle
         getLocation(2, 2).setLocked(true); // Wizard's Lair
 
         // === Descriptions alternatives ===
-        lockedDescriptions.put("Burger King", "[You try to enter, but the door is strangely sealed with a burger-shaped emblem.]");
+        lockedDescriptions.put("Burger King", "[You try to enter, but the door is strangely sealed with a burger-shaped emblem.]\n");
         lockedDescriptions.put("Castle", "[The gates of Lord Alberto’s castle are locked tight. You’ll need a key.]");
         lockedDescriptions.put("Wizard's Lair", "[A magical barrier repels you. Perhaps the wizard is not home yet.]");
 
         // === Zone de départ découverte ===
         getLocation(1, 1).setDiscovered(true); // House
 
-        // === Objets de test ===
-        getLocation(0, 0).addItem(new Item("objet1", "sample descr 1", "Bridge"));
-        getLocation(2, 1).addItem(new Item("objet2", "sample descr 2", "Castle"));
-        getLocation(2, 2).addItem(new Item("objet3", "sample descr 3", "Wizard's Lair"));
-
         // === Massomo, déverrouille Wizard's Lair ===
         getLocation(0, 0).addItem(new Item("massomo", "You see Massomo meditating above the river. His eyes open slowly when you approach.", "Wizard's Lair"));
 
         // === Tonton Eleganza Market ===
-        map[2][0].addItem(new Item("tonton", "An elegant man in a turquoise silk suit holding a melon. He looks at you with flair.", "Market"));
+        getLocation(0, 2).addItem(new Item("tonton", "An elegant man in a turquoise silk suit holding a melon. He looks at you with flair.", "Market"));
 
-        Item vipCard = new Item("vip card", "This shiny VIP card gives you access to unlimited burgers.", "Burger King");
+        // === VIP Card de Tonton ===
+        Item vipCard = new Item("vip card", "\nThis shiny VIP card gives you access to unlimited burgers.\n", "Burger King");
 
         String tontonIntro = "\nTonton: Hello young man, how are you?\n" +
                 "[A strange card is sticking out of his pocket...]\n" +
@@ -74,7 +70,22 @@ public class WorldMap {
                 "Tonton: I found my old VIP pass that lets me eat for free at Burger King...\n" +
                 "Tonton: I’ll give it to you, but first you have to guess how many fingers I’m hiding behind my back! \n";
 
-        getLocation(0, 2).setNpcPuzzle("Tonton Eleganza", tontonIntro, vipCard); // Market
+        getLocation(0, 2).setNpcPuzzle("Tonton Eleganza", tontonIntro, vipCard);
+
+        // === Objets distracteurs ===
+        Item farmJunk = new Item(
+            "a clean pitchfork",
+            "Oddly shiny and completely clean. Nobody dares to touch it.",
+            "Farm"
+        );
+        getLocation(1, 0).addItem(farmJunk);
+
+        Item riverPhoto = new Item(
+            "picture of tonton",
+            "The strange-looking man wears a big red hat and a green suit.",
+            "River"
+        );
+        getLocation(1, 2).addItem(riverPhoto);
     }
 
     public String getLockedDescription(String locationName) {
