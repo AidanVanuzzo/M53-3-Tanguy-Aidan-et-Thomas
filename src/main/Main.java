@@ -8,7 +8,7 @@ public class Main {
     3) CLook : Modifier pour afficher les objets/énigmes de la zone courante
     --
     4) Scénario Victoire (kill Alberto qui vous attaque (10 sec pour se défendre, sinon 'quit'))
-    5) Debug (Move wromg command, Multiple 'map', etc.)
+    5) Debug (Move wrong command, Multiple 'map', etc.)
     */
 
     public static void main(String[] args) {
