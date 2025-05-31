@@ -26,14 +26,14 @@ public class CLook implements ICommand {
 
             List<Item> items = current.getItems();
             if (!items.isEmpty()) {
-                System.out.println("You see the following items/PNJ:");
+                System.out.println("You see around you:");
                 for (Item item : items) {
                     System.out.println();
                     System.out.println(" - " + item.getName()); // ✅ affiche uniquement le nom
                 }
                 System.out.println();
             } else {
-                System.out.println("There are no visible items/PNJ here.");
+                System.out.println("Nothing interesting here...");
                 System.out.println();
             }
         } else {

@@ -12,7 +12,7 @@ public class CSay implements ICommand {
     public CSay(Game game) {
         this.game = game;
         this.description = "Allows you to take objects or talk using 'take <name>'.";
-        this.scanner = new Scanner(System.in);
+        this.scanner = game.getScanner();  // ✅ Utilisation du scanner global
     }
 
     @Override
@@ -68,7 +68,6 @@ public class CSay implements ICommand {
 
                                 current.completePuzzle();
 
-                                // Supprimer Tonton ou Massomo de la zone après interaction
                                 if (npcName.equals("tonton eleganza") || npcFirst.equals("tonton")) {
                                     current.removeItemByName("tonton");
                                 } else if (npcName.equals("massomo")) {
@@ -87,6 +86,39 @@ public class CSay implements ICommand {
                     }
                     return;
                 }
+            }
+
+            // === Cas spécial : Massomo dans Wizard's Lair (3 énigmes) ===
+            if (itemName.equals("massomo") && current.getName().equalsIgnoreCase("Wizard's Lair")) {
+                String[][] questions = {
+                    { "When I’m fresh, I’m hot. What am I?", "bread" },
+                    { "A father and his son together are 36 years old. The father is 30 years older than the son. How old is the son?", "3" },
+                    { "Yesterday I was, tomorrow I will be. What am I?", "today" }
+                };
+
+                System.out.println("\nMassomo: Welcome to my lair. If you pass your training, I'll give you access to the paralysis spell.");
+
+                for (String[] q : questions) {
+                    String answer;
+                    do {
+                        System.out.println();
+                        System.out.println(q[0]);
+                        System.out.print("Your answer: ");
+                        answer = scanner.nextLine().toLowerCase().trim();
+
+                        if (!answer.equals(q[1])) {
+                            System.out.println("Massomo: No no, son. That’s not it. Let’s try again.");
+                        }
+                    } while (!answer.equals(q[1]));
+                }
+
+                System.out.println();
+                System.out.println("Massomo: Well done. Listen carefully. I won't repeat myself...");
+                System.out.println("\nMassomo: If you’re ever in danger, shout 'Rastapopoulos' and your enemy will explode!\n");
+                System.out.println("[Massomo disappeared in a flash of blue light.]\n");
+
+                current.removeItemByName("massomo");
+                return;
             }
 
             // === Cas normal : prise d’objet dans la zone ===
@@ -108,8 +140,7 @@ public class CSay implements ICommand {
                     System.out.println();
                 }
 
-                // Cas spécial : Massomo -> déverrouille la tour + spawn du parchemin
-                if (name.equals("massomo")) {
+                if (name.equals("massomo") && current.getName().equalsIgnoreCase("Bridge")) {
                     Location wizardLair = game.getWorldMap().getLocation(2, 2);
                     if (wizardLair != null && wizardLair.isLocked()) {
                         wizardLair.setLocked(false);

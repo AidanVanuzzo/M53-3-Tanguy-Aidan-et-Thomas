@@ -86,6 +86,11 @@ public class WorldMap {
             "River"
         );
         getLocation(1, 2).addItem(riverPhoto);
+
+        // === Massomo dans la Wizard's Lair (avec énigme)
+        Item lairMassomo = new Item("massomo", "Massomo stands silently by his bookshelf. His eyes sparkle with ancient knowledge.", "Wizard's Lair");
+        getLocation(2, 2).addItem(lairMassomo);
+
     }
 
     public String getLockedDescription(String locationName) {
