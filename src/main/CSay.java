@@ -17,7 +17,8 @@ public class CSay implements ICommand {
 
     @Override
     public void execute() {
-        System.out.println("Type 'take <name>':");
+        System.out.println("Type 'take <name>' to take or interact.");
+        System.out.println();
         String input = scanner.nextLine().toLowerCase().trim();
 
         if (input.startsWith("take ")) {
@@ -36,7 +37,7 @@ public class CSay implements ICommand {
                     boolean success = false;
 
                     while (!success) {
-                        System.out.print("Your guess (0–10): ");
+                        System.out.print("Your guess: ");
                         String guessInput = scanner.nextLine().trim();
 
                         try {
@@ -44,20 +45,24 @@ public class CSay implements ICommand {
                             if (guess == target) {
                                 success = true;
                                 System.out.println();
-                                System.out.println("Bravo " + game.getPlayer().getName() + "! You truly are your uncle’s heir.");
-                                System.out.println("Take my card, go grab something to eat. It’s nearly lunchtime.");
-                                System.out.println("Go shine, my nephew. Elegance is power.");
+                                System.out.println("Tonton: Yeeeaaah! You truly are your uncle’s heir.");
+                                System.out.println("Tonton: Take my card, go grab something to eat. It’s nearly lunchtime.");
+                                System.out.println("Tonton: Go shine, my nephew. And always remember: Elegance is power!");
                                 System.out.println();
 
                                 Item reward = current.getRewardItem();
                                 if (reward != null) {
                                     game.getPlayer().addItem(reward);
+                                    System.out.println();
                                     System.out.println("[You received: " + reward.getName() + "]");
+                                    System.out.println();
                                 }
 
                                 current.completePuzzle();
                             } else {
-                                System.out.println("No, my dear, I was hiding " + target + ". But don’t worry, let’s try again.");
+                                System.out.println();
+                                System.out.println("Tonton: No, my dear, I was hiding " + target + ". But don’t worry, let’s try again.");
+                                System.out.println();
                                 target = (int) (Math.random() * 11); // Nouvelle tentative
                             }
                         } catch (NumberFormatException e) {
