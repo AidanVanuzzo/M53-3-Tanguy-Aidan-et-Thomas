@@ -3,8 +3,7 @@ package main;
 public class Main {
 
     /*
-    1) Mécanisme pour dévérouiller 3 zones --> CSay : take <nom_de_l’objet>
-    2) CInventaire : Clés, Énigmes ('Inspect'/'Use'). Random chagement énigmes
+    2) CInventaire : Clés, Énigmes ('Inspect'/'Use'). Random chagement énigmes CSay : take <nom_de_l’objet>
     3) CLook : Modifier pour afficher les objets/énigmes de la zone courante
     --
     4) Scénario Victoire (kill Alberto qui vous attaque (10 sec pour se défendre, sinon 'quit'))

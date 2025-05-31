@@ -114,4 +114,10 @@ public void run() {
     public void movePlayer(int newX, int newY) {
         updatePlayerLocation(newX, newY);
     }
+
+    // [01.06.2025] Getter pour accéder au joueur depuis d'autres classes (comme CInventory)
+    public Player getPlayer() {
+        return player;
+    }
+
 }
