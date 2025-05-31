@@ -3,11 +3,11 @@ package main;
 public class Main {
 
     /*
-    1) Mécanisme pour dévérouiller 3 zones
-    2) Système d'objets, Clé, Énigmes (Ramasser/Inspecter)
+    1) Mécanisme pour dévérouiller 3 zones --> CSay : take <nom_de_l’objet>
+    2) Classe CInventaire : Clés, Énigmes ('Inspect'/'Use'). Random pour changer les énigmes
     3) CLook : Modifier pour afficher les objets/énigmes de la zone courante
     --
-    4) Scénario Victoire (kill Alberto)
+    4) Scénario Victoire (kill Alberto qui vous attaque (10 sec pour se défendre, sinon 'quit'))
     5) Debug (Move wromg command, Multiple 'map', etc.)
     */
 
