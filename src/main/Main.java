@@ -3,10 +3,8 @@ package main;
 public class Main {
 
     /*
-    1) Coder la quête (jusqu'au Boss) et Cleen
-    --
-    2) Scénario Victoire (kill Alberto qui vous attaque (10 sec pour se défendre, sinon 'quit'))
-    3) Debug (Move wrong command, Multiple 'map', Inventory, etc.)
+    1) Coder la quête (Win Alberto 10 Sec)
+    3) Debug (Move wrong command, Multiple 'map', Inventory...)
     */
 
     public static void main(String[] args) {

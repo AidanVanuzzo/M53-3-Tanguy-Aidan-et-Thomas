@@ -12,7 +12,7 @@ public class CInventory implements ICommand {
 
     public CInventory(Game game) {
         this.game = game;
-        this.description = "Manage your inventory. Type 'inventory', 'inspect <item>', or 'use <item>'.";
+        this.description = "Manage your inventory. Use 'inspect <item>', or 'use <item>'.";
         this.scanner = new Scanner(System.in);
     }
 
@@ -21,13 +21,17 @@ public class CInventory implements ICommand {
         // [01.06.2025] Détection d'exécution simple (si tapé comme 'inventory' uniquement)
         List<Item> items = game.getPlayer().getInventory();
         if (items.isEmpty()) {
+            System.out.println();
             System.out.println("Your inventory is empty.");
             return; // Ne rentre pas dans le menu
         } else {
+            System.out.println();
             System.out.println("Inventory:");
             for (Item item : items) {
+                System.out.println();
                 System.out.println(" - " + item.getName());
             }
+            System.out.println();
             return; // Stoppe ici sans afficher le menu
         }
     }

@@ -16,8 +16,8 @@ public class CommandRegistry {
         commands.put("map", new CMap(game.getWorldMap()));
         commands.put("move", new CMove(game));
         commands.put("look", new CLook(game));
-        commands.put("inventory", new CInventory(game)); // [01.06.2025] Commande pour gérer l’inventaire
-        commands.put("say", new CSay(game));             // [01.06.2025] Commande pour prendre des objets avec "take <objet>
+        commands.put("say", new CSay(game));  
+        commands.put("inventory", new CInventory(game));
     }
 
     //Méthode pour l'exécution des comandes

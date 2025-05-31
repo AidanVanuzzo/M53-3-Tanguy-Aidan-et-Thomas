@@ -31,6 +31,7 @@ public class CLook implements ICommand {
             if (!items.isEmpty()) {
                 System.out.println("You see the following items:");
                 for (Item item : items) {
+                    System.out.println();
                     System.out.println(" - " + item.getName() + ": " + item.getDescription());
                 }
                 System.out.println();
