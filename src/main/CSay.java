@@ -9,7 +9,6 @@ public class CSay implements ICommand {
     private Game game;
     private Scanner scanner;
 
-    // [01.06.2025] Commande 'take <objet>' pour ramasser un objet dans la zone
     public CSay(Game game) {
         this.game = game;
         this.description = "Allows you to take objects using 'take <object name>'.";
@@ -26,8 +25,18 @@ public class CSay implements ICommand {
             Location current = game.getCurrentLocation();
             Item item = current.removeItemByName(itemName);
             if (item != null) {
-                game.getPlayer().addItem(item); //erruer
+                game.getPlayer().addItem(item);
                 System.out.println("You picked up: " + item.getName());
+
+                // [01.06.2025] Déverrouille la tour du sorcier si on prend massomo
+                if (item.getName().equalsIgnoreCase("massomo")) {
+                    Location wizardLair = game.getWorldMap().getLocation(2, 2); // Wizard's Lair coordonnée (2,2)
+                    if (wizardLair != null && wizardLair.isLocked()) {
+                        wizardLair.setLocked(false);
+                        System.out.println("[The wise man disappeared, leaving a note: Meet me in my tower and I will teach you my power.]");
+                    }
+                }
+
             } else {
                 System.out.println("There is no such item here.");
             }

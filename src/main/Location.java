@@ -1,23 +1,20 @@
 package main;
 
-import utils.IPrintable;
 import java.util.ArrayList;
 import java.util.List;
+import utils.IPrintable;
 
 public class Location implements IPrintable {
 
-    //Nom et description du lieu
     private String name;
     private String description;
-
-    //Permet de gérer si un lieu est vérouillé et s'il a déjà été visité
     private boolean locked;
     private boolean discovered;
 
-    // [01.06.2025] Liste des objets présents sur place
+    // [01.06.2025] Liste des objets dans cette zone
     private List<Item> items;
 
-    //Constructeur
+    // Constructeur
     public Location(String name, String description) {
         this.name = name;
         this.description = description;
@@ -26,7 +23,7 @@ public class Location implements IPrintable {
         this.items = new ArrayList<>();
     }
 
-    //Getters et Setters
+    // Getters et setters
     public String getName() {
         return name;
     }
@@ -51,17 +48,17 @@ public class Location implements IPrintable {
         this.locked = locked;
     }
 
-    // [01.06.2025] Ajoute un objet à la zone
+    // [01.06.2025] Ajoute un objet à cette zone
     public void addItem(Item item) {
         items.add(item);
     }
 
-    // [01.06.2025] Renvoie la liste des objets dans la zone
+    // [01.06.2025] Retourne la liste des objets présents dans la zone
     public List<Item> getItems() {
         return items;
     }
 
-    // [01.06.2025] Retire un objet par son nom (utilisé par CSay)
+    // [01.06.2025] Retire un objet par son nom et le retourne (sinon null)
     public Item removeItemByName(String name) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -72,10 +69,13 @@ public class Location implements IPrintable {
         return null;
     }
 
-    //Affichage sur la carte
+    // Méthodes de l’interface IPrintable
     @Override
     public String getPrintableString() {
-        return discovered ? name : "";
+        if (discovered) {
+            return name;
+        }
+        return "";
     }
 
     @Override

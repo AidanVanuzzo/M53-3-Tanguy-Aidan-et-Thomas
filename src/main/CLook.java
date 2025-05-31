@@ -1,6 +1,7 @@
 package main;
 
 import interfaces.ICommand;
+import java.util.List;
 
 public class CLook implements ICommand {
 
@@ -24,12 +25,24 @@ public class CLook implements ICommand {
             System.out.println();
             System.out.println(current.getDescription());
             System.out.println();
+
+            // [01.06.2025] Affiche les objets présents dans la zone
+            List<Item> items = current.getItems();
+            if (!items.isEmpty()) {
+                System.out.println("You see the following items:");
+                for (Item item : items) {
+                    System.out.println(" - " + item.getName() + ": " + item.getDescription());
+                }
+                System.out.println();
+            } else {
+                System.out.println("There are no visible items here.");
+                System.out.println();
+            }
         } else {
             System.out.println("You are lost in the void.");
         }
     }
 
-    //Getter pour récupérer la description de la commande 'look'
     @Override
     public String getDescription() {
         return this.description;

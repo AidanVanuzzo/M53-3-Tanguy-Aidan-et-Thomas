@@ -3,11 +3,10 @@ package main;
 public class Main {
 
     /*
-    2) CInventaire : Clés, Énigmes ('Inspect'/'Use'). Random chagement énigmes CSay : take <nom_de_l’objet>
-    3) CLook : Modifier pour afficher les objets/énigmes de la zone courante
+    1) Coder la quête (jusqu'au Boss) et Cleen
     --
-    4) Scénario Victoire (kill Alberto qui vous attaque (10 sec pour se défendre, sinon 'quit'))
-    5) Debug (Move wrong command, Multiple 'map', etc.)
+    2) Scénario Victoire (kill Alberto qui vous attaque (10 sec pour se défendre, sinon 'quit'))
+    3) Debug (Move wrong command, Multiple 'map', Inventory, etc.)
     */
 
     public static void main(String[] args) {

@@ -62,6 +62,15 @@ public class WorldMap {
     
         // [31.05.2025] La zone de départ est découverte par défaut
         map[1][1].setDiscovered(true);
+
+        // [01.06.2025] Objets de test ajoutés à différentes zones
+        map[0][0].addItem(new Item("objet1", "sample descr 1", "Bridge"));   // Bridge
+        map[2][1].addItem(new Item("objet2", "sample descr 2", "Castle"));   // Castle
+        map[2][2].addItem(new Item("objet3", "sample descr 3", "Wizard's Lair")); // Wizard's Lair
+
+        // [01.06.2025] Rencontre avec Massomo le Sorcier au Bridge pour débloquer Wizard's Lair
+        map[0][0].addItem(new Item("massomo", "You see Massomo meditating above the river. His eyes open slowly when you approach.", "Wizard's Lair"));
+
     }
     
 
