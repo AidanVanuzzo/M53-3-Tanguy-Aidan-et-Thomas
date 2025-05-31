@@ -20,13 +20,16 @@ public class CHelp implements ICommand {
     //Méthode execute() pour la commande 'help' via une boucle for
     @Override
     public void execute() {
+        System.out.println();
         System.out.println("Controls available:");
+        System.out.println();
         for (Map.Entry<String, ICommand> entry : commands.entrySet()) {
             String commandName = entry.getKey().toLowerCase();
             boolean isHelpCommand = commandName.equals("help");
             //Condition pour ne pas afficher 'help'
             if (!isHelpCommand) {
-                System.out.println(" - " + commandName + " : " + entry.getValue().getDescription());
+                System.out.println(" " + commandName + " - " + entry.getValue().getDescription());
+                System.out.println();
             }
         }
     }

@@ -19,8 +19,11 @@ public class CLook implements ICommand {
         Location current = game.getCurrentLocation();
 
         if (current != null) {
+            System.out.println();
             System.out.println("You look around...");
+            System.out.println();
             System.out.println(current.getDescription());
+            System.out.println();
         } else {
             System.out.println("You are lost in the void.");
         }

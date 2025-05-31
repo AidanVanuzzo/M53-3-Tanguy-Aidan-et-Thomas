@@ -14,64 +14,69 @@ public class CMove implements ICommand {
 
     //Constructeur de CMove
     CMove(Game game) {
-        this.description = "Allows you to move in a cardinal direction (north, south, east, west).";
+        this.description = "Allows you to move in a cardinal direction.";
         this.game = game;
         this.scanner = new Scanner(System.in);
     }
 
-    //Méthode execute() pour la commande 'move' qui lance appel la méthode de déplacement du joueur
+    //Méthode execute() pour la commande 'move'
     public void execute() {
         movePlayer();
     }
 
-    //Getter pour récupérer la description de la commande 'move'
+    //Getter pour la description
     @Override
     public String getDescription() {
         return this.description;
     }
 
-    //Méthode pour déplacer le joueur (appelée par execute()) selon la direction choisie (scanner)
+    // [31.05.2025] Gère le déplacement avec vérification des zones verrouillées
     public void movePlayer() {
-        //Indication au joueur pour le choix de la direction
+        System.out.println();
         System.out.println("To go North, type 1");
         System.out.println("To go South, type 2");
         System.out.println("To go East, type 3");
         System.out.println("To go West, type 4");
-        //Variable pour stocker le choix
+
         int direction;
-        //Appel du scanner dans une boucle pour s'assurer que le joueur entre un nombre valide
         do {
             direction = scanner.nextInt();
+            System.out.println();
             if (direction > 4 || direction < 1) {
                 System.out.println("You need to type a number between 1 - 4");
             }
         } while (direction > 4 || direction < 1);
-        //Récupère la position actuelle du joueur
+
         int x = game.getPlayerX();
         int y = game.getPlayerY();
-        //Variables pour stocker la nouvelle position
         int newX = x;
         int newY = y;
-        //Mise à jour de la position selon la direction choisie
+
         switch (direction) {
             case 1 -> newY--; // North
             case 2 -> newY++; // South
             case 3 -> newX++; // East
             case 4 -> newX--; // West
         }
-        //Récupère l'emplacement suivant sur la carte
+
         Location nextLocation = game.getWorldMap().getLocation(newX, newY);
-        //Gestion out of bound ou zone vérouillée
+
         if (nextLocation == null) {
             System.out.println("You can't go that way.");
         } else if (nextLocation.isLocked()) {
-            System.out.println("Zone locked.");
+            // [31.05.2025] Zone verrouillée : découverte manuellement car on ne bouge pas
+            nextLocation.setDiscovered(true);
+            String lockedMsg = game.getWorldMap().getLockedDescription(nextLocation.getName());
+            System.out.println(lockedMsg);
+        
+            // [31.05.2025] Mise à jour manuelle de la map pour forcer l'affichage
+            game.getWorldMap().getWorldMap()[newY][newX] = nextLocation;
         } else {
-            //Mise à jour de la position
+            // Zone accessible → on se déplace normalement
             game.setPlayerX(newX);
             game.setPlayerY(newY);
-            //Affichage de la description du nouveau POI
             System.out.println(nextLocation.getDescription());
+            System.out.println();
         }
     }
 }

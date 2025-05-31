@@ -13,8 +13,8 @@ public class CommandRegistry {
     CommandRegistry(Game game) {
         commands = new HashMap<>();
         commands.put("help", new CHelp(commands));
-        commands.put("move", new CMove(game));
         commands.put("map", new CMap(game.getWorldMap()));
+        commands.put("move", new CMove(game));
         commands.put("look", new CLook(game));
     }
 
@@ -24,14 +24,6 @@ public class CommandRegistry {
         java.util.Scanner scanner = new java.util.Scanner(System.in);
         //Stockage de la saisie
         String input;
-        //Intro du jeu
-        System.out.println("///////////////////////////////////////////////////");
-        System.out.println("Welcome, brave warrior!");
-        System.out.println("Time is running out...");
-        System.out.println("You must stop Lord Alberto, before his dark powers destroy our world!");
-        System.out.println("Type 'help' to discover the commands.");
-        System.out.println("To exit, type 'quit'.");
-        System.out.println("///////////////////////////////////////////////////");
         //Boucle qui permet la saisie de commande tant que la partie est active
         while (true) {
             System.out.print("Enter a command : ");
