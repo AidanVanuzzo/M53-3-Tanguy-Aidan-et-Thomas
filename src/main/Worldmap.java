@@ -65,7 +65,7 @@ public class WorldMap {
         Item vipCard = new Item("vip card", "\nThis shiny VIP card gives you access to unlimited burgers.\n", "Burger King");
 
         String tontonIntro = "\nTonton: Hello young man, how are you?\n" +
-                "[A strange card is sticking out of his pocket...]\n" +
+                "[A strange card is sticking out of his pocket.]\n" +
                 "\n[Tonton, annoyed, exclaims...]\n" +
                 "Tonton: I found my old VIP pass that lets me eat for free at Burger King...\n" +
                 "Tonton: I’ll give it to you, but first you have to guess how many fingers I’m hiding behind my back! \n";
