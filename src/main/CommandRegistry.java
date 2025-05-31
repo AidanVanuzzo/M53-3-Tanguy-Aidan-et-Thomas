@@ -24,9 +24,17 @@ public class CommandRegistry {
         java.util.Scanner scanner = new java.util.Scanner(System.in);
         //Stockage de la saisie
         String input;
+        //Intro
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("Welcome, brave warrior!");
+        System.out.println("Time is running out...");
+        System.out.println("You must stop Lord Alberto before he destroys our world with his powers!");
+        System.out.println("Type 'help' to discover the commands.");
+        System.out.println("to exit, type 'quit'.");
+        System.out.println("///////////////////////////////////////////////////");
         //Boucle qui permet la saisie de commande tant que la partie est active
         while (true) {
-            System.out.print("Enter a command (or type 'quit' to exit): ");
+            System.out.print("Enter a command : ");
             input = scanner.nextLine().toLowerCase();
             //Si l'utilisateur entre 'quit', on quitte la boucle et termine le jeu
             if (input.equals("quit")) {
