@@ -23,8 +23,6 @@ public class Game {
         //Création du joueur avec sa position de départ
         player = new Player(startingLocation);
     }
-    
-    //Méthodes, Getters et Setters -->
 
     //Affiche les instructions et attend les commandes du joueur
     public void run() {
@@ -42,16 +40,25 @@ public class Game {
         return playerY;
     }
 
-    //Met à jour la position X du joueur
+    // [31.05.2025] Remplacé par appel à la méthode centralisée avec découverte de la zone
     public void setPlayerX(int x) {
-        this.playerX = x;
-        player.setLocation(worldMap.getLocation(playerX, playerY));
+        updatePlayerLocation(x, this.playerY);
     }
 
-    //Met à jour la position Y du joueur
+    // [31.05.2025] Remplacé par appel à la méthode centralisée avec découverte de la zone
     public void setPlayerY(int y) {
+        updatePlayerLocation(this.playerX, y);
+    }
+
+    // [31.05.2025] Méthode centralisée pour mettre à jour position + découverte automatique
+    private void updatePlayerLocation(int x, int y) {
+        this.playerX = x;
         this.playerY = y;
-        player.setLocation(worldMap.getLocation(playerX, playerY));
+        Location loc = worldMap.getLocation(x, y);
+        if (loc != null) {
+            loc.setDiscovered(true); // Découvre la zone visitée
+        }
+        player.setLocation(loc);
     }
 
     //Retourne la carte
@@ -64,10 +71,8 @@ public class Game {
         return player.getLocation();
     }
 
-    //Déplace le joueur à une nouvelle position X/Y et met à jour sa position
+    // [31.05.2025] Utilise maintenant updatePlayerLocation() pour centraliser la logique
     public void movePlayer(int newX, int newY) {
-        this.playerX = newX;
-        this.playerY = newY;
-        player.setLocation(worldMap.getLocation(playerX, playerY));
+        updatePlayerLocation(newX, newY);
     }
 }

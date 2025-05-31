@@ -43,6 +43,8 @@ public class WorldMap {
         setLocation(0, 2, new Location("Market", "A busy place full of merchants."));
         setLocation(1, 2, new Location("River", "A flowing river with a narrow bridge."));
         setLocation(2, 2, new Location("Wizard's Lair", "The tower of Massamo the great wizard."));
+
+        map[1][1].setDiscovered(true); // [31.05.2025] La zone de départ est découverte par défaut.
     }
 
     //Méthode pour asigner un lieu à une position donnée sur la carte

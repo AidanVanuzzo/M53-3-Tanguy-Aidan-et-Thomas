@@ -53,9 +53,14 @@ public class Location implements IPrintable {
     //Implémentation de la méthode de l'interface IPrintable
     //Retourne le nom du lieu à afficher sur la carte
     @Override
-    public String getPrintableString() {
+public String getPrintableString() {
+    // [31.05.2025] N'affiche le nom que si la zone est découverte ET non verrouillée.
+    if (discovered && !locked) {
         return name;
     }
+    return ""; // Affiche une case vide sinon
+}
+
 
     //Indique si le lieu doit apparaître en grisé (verrouillé ou non découvert)
     @Override
