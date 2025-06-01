@@ -168,15 +168,15 @@ public class CSay implements ICommand {
 
             // === Crappi Crapo - Cave ===
             if (itemName.equals("crappi") && current.getName().equalsIgnoreCase("Cave") && current.isPuzzleActive()) {
-                System.out.println("\nCrappi Crapo: Hey Chef, it’s rough being a frog these days. I'm starving out here.");
+                System.out.println("\n[the animal lets out a chuckle...]\nCrappi Crapo: Hey Chef, it’s rough being a frog these days. I'm starving out here.");
                 System.out.println("Crappi Crapo: You know what? I’ll give you this key if you bring me something to eat.");
-                System.out.print("Your answer (yes/no): ");
+                System.out.print("\nYour answer (yes/no): ");
                 String reply = scanner.nextLine().trim().toLowerCase();
 
                 if (reply.equals("yes")) {
                     if (game.getPlayer().getItemByName("wooper") != null) {
                         System.out.println("\nCrappi Crapo: Wow, you were fast, boss! Thanks, you've made my day. Take this key, you’ve earned it.");
-                        System.out.println("[You received: Gold Key]\n");
+                        System.out.println("\n[You received: Gold Key]\n");
 
                         Item goldKey = current.getRewardItem();
                         if (goldKey != null && game.getPlayer().getItemByName(goldKey.getName()) == null) {
