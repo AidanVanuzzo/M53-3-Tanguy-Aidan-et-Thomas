@@ -3,9 +3,9 @@ package main;
 public class Main {
 
     /*
-    1) Cave : Wooper --> Crapeau énigme --> Donne Clé Alberto
-    2) Castle : Coder la quête finale (Alberto tue après 15 Sec)
-    +) Commentaires + Debug
+    1) Castle : Coder la quête finale (Alberto tue après 15 Sec)
+    2) Commentaires + Debug
+    3) Devoir 6
     */
 
     public static void main(String[] args) {

@@ -25,7 +25,6 @@ public class CMove implements ICommand {
         return this.description;
     }
 
-    // Gère le déplacement avec vérification des zones verrouillées
     public void movePlayer() {
         System.out.println();
         System.out.println("To go North, type 1");

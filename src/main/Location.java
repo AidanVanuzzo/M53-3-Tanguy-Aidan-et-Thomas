@@ -11,16 +11,15 @@ public class Location implements IPrintable {
     private boolean locked;
     private boolean discovered;
 
-    // Objets présents dans la zone
+    //Objets présents dans la zone
     private List<Item> items;
 
-    // PNJ et énigme associés à la zone
+    //PNJ et énigme associés à la zone
     private String npcName;
     private String npcIntro;
     private boolean puzzleActive;
     private Item rewardItem;
 
-    // Constructeur
     public Location(String name, String description) {
         this.name = name;
         this.description = description;
@@ -33,7 +32,7 @@ public class Location implements IPrintable {
         this.rewardItem = null;
     }
 
-    // Getters et setters de base
+    //Getters et Setters
     public String getName() {
         return name;
     }
@@ -58,7 +57,7 @@ public class Location implements IPrintable {
         this.locked = locked;
     }
 
-    // Gestion des objets
+    //Gestion des objets
     public void addItem(Item item) {
         items.add(item);
     }
@@ -77,7 +76,7 @@ public class Location implements IPrintable {
         return null;
     }
 
-    // Gestion du PNJ et de l'énigme
+    //Gestion du PNJ et de l'énigme
     public void setNpcPuzzle(String npcName, String npcIntro, Item rewardItem) {
         this.npcName = npcName;
         this.npcIntro = npcIntro;
@@ -109,7 +108,7 @@ public class Location implements IPrintable {
         this.puzzleActive = false;
     }
 
-    // Méthodes d'affichage de la carte
+    //Méthodes d'affichage de la carte
     @Override
     public String getPrintableString() {
         if (discovered) {

@@ -30,7 +30,7 @@ public class CInventory implements ICommand {
                 System.out.println(" - " + item.getName());
             }
             System.out.println();
-            // Lance le menu interactif automatiquement
+            //Lance le menu automatiquement
             interactiveMenu();
         }
     }

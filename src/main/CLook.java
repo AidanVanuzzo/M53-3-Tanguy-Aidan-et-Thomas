@@ -29,7 +29,7 @@ public class CLook implements ICommand {
                 System.out.println("You see around you:");
                 for (Item item : items) {
                     System.out.println();
-                    System.out.println(" - " + item.getName()); // ✅ affiche uniquement le nom
+                    System.out.println(" - " + item.getName());
                 }
                 System.out.println();
             } else {

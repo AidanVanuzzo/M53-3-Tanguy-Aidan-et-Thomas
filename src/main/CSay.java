@@ -80,7 +80,7 @@ public class CSay implements ICommand {
                 }
             }
 
-            // === Cas spécial : PNJ (Tonton ou Massomo) ===
+            // === Cas spécial : PNJ (Tonton et Massomo) ===
             if (current.hasNpc() && current.isPuzzleActive() && !itemName.equals("crappi")) {
                 String npcName = current.getNpcName().toLowerCase();
                 String npcFirst = npcName.split(" ")[0];

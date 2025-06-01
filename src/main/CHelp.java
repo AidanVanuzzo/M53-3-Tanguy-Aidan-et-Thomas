@@ -19,7 +19,7 @@ public class CHelp implements ICommand {
         System.out.println("Controls available:");
         System.out.println();
 
-        // Affichage dans un ordre personnalisé
+        //Ordre d'affichage
         printCommand("map");
         printCommand("move");
         printCommand("look");

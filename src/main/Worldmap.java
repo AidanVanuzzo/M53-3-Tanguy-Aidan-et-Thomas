@@ -10,7 +10,7 @@ public class WorldMap {
     private int nord;
     private Game game;
 
-    // Descriptions alternatives pour les zones verrouillées
+    //Descriptions alternatives pour les zones verrouillées
     private Map<String, String> lockedDescriptions = new HashMap<>();
 
     public WorldMap() {

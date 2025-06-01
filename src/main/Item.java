@@ -1,11 +1,10 @@
 package main;
 
-// [01.06.2025] Classe représentant un objet du jeu (clé, item, etc.)
 public class Item {
 
     private String name;
     private String description;
-    private String useZone; // Optionnel : zone où l’objet peut être utilisé
+    private String useZone;
 
     public Item(String name, String description, String useZone) {
         this.name = name;
