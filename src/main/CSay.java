@@ -25,7 +25,63 @@ public class CSay implements ICommand {
             String itemName = input.substring(5).trim();
             Location current = game.getCurrentLocation();
 
-            // === Cas spécial : PNJ avec énigme ===
+            // === CHRIS Burger King ===
+            if (itemName.equals("chris") && current.getName().equalsIgnoreCase("Burger King") && current.isPuzzleActive()) {
+                System.out.println("\nChris: Hello, traveler! Would you like to try one of my delicious Whoppers? (yes/no)");
+                System.out.print("Your answer: ");
+                String reply = scanner.nextLine().trim().toLowerCase();
+
+
+                if (reply.equals("no")) {
+                    System.out.println("\nChris: Ahrrr, you don’t know what you’re missing, my friend.\n");
+                    return;
+                } else if (reply.equals("yes")) {
+                    String[][] chrisRiddles = {
+                        { "I’m green, light, sometimes crunchy, sometimes wilted, always here to pretend it's healthy.", "lettuce|salad" },
+                        { "I melt in the heat, I’m yellow or orange, and without me, your burger is sad.", "cheese" },
+                        { "I’m caught between two buns, I’ve got many layers, yet I stay compact. Who am I?", "burger" }
+                    };
+
+                    int rand = (int) (Math.random() * chrisRiddles.length);
+                    String question = chrisRiddles[rand][0];
+                    String[] validAnswers = chrisRiddles[rand][1].split("\\|");
+
+                    System.out.println("\nChris: Okay, but first you'll have to successfully answer one of my riddles.");
+                    System.out.println();
+                    System.out.println("Chris: " + question);
+                    System.out.print("Your answer: ");
+                    String playerAnswer = scanner.nextLine().trim().toLowerCase();
+
+                    boolean correct = false;
+                    for (String ans : validAnswers) {
+                        if (playerAnswer.equals(ans)) {
+                            correct = true;
+                            break;
+                        }
+                    }
+
+                    if (correct) {
+                        System.out.println("\nChris: BOOOOOOYYAAA! You’re worthy of my culinary talent. Here, take a Whopper, you’ve earned it.");
+                        Item wooper = new Item(
+                            "Wooper",
+                            "A Warm Juicy Wooper. It looks delicious.",
+                            null
+                        );
+                        game.getPlayer().addItem(wooper);
+                        System.out.println("\n[You received: Wooper]\n");
+                        current.removeItemByName("chris");
+                        current.completePuzzle();
+                    } else {
+                        System.out.println("Chris: Ah, that’s incorrect. You don’t know what you’re missing, my friend.");
+                    }
+                    return;
+                } else {
+                    System.out.println("Chris: I didn’t understand your answer.");
+                    return;
+                }
+            }
+
+            // === Cas spécial : PNJ (Tonton ou Massomo) ===
             if (current.hasNpc() && current.isPuzzleActive()) {
                 String npcName = current.getNpcName().toLowerCase();
                 String npcFirst = npcName.split(" ")[0];
@@ -50,34 +106,24 @@ public class CSay implements ICommand {
                                 System.out.println("Tonton: Go shine, my nephew. And always remember: Elegance is power!");
 
                                 Item reward = current.getRewardItem();
-                                if (reward != null) {
-                                    String rewardName = reward.getName().toLowerCase();
-                                    if (rewardName.equals("tonton") || rewardName.equals("massomo")) {
-                                        System.out.println("[You talked with " + reward.getName() + ", but they are not an item to take.]");
-                                    } else {
-                                        if (game.getPlayer().getItemByName(reward.getName()) == null) {
-                                            game.getPlayer().addItem(reward);
-                                            System.out.println();
-                                            System.out.println("[You received: " + reward.getName() + "]");
-                                            System.out.println();
-                                        } else {
-                                            System.out.println("[You already have the " + reward.getName() + ".]");
-                                        }
-                                    }
+                                if (reward != null && game.getPlayer().getItemByName(reward.getName()) == null) {
+                                    game.getPlayer().addItem(reward);
+                                    System.out.println();
+                                    System.out.println("[You received: " + reward.getName() + "]");
+                                    System.out.println();
                                 }
 
                                 current.completePuzzle();
 
-                                if (npcName.equals("tonton eleganza") || npcFirst.equals("tonton")) {
+                                if (npcName.contains("tonton")) {
                                     current.removeItemByName("tonton");
-                                } else if (npcName.equals("massomo")) {
+                                } else if (npcName.contains("massomo")) {
                                     current.removeItemByName("massomo");
                                 }
 
                             } else {
                                 System.out.println();
                                 System.out.println("Tonton: No, my dear, I was hiding " + target + ". But don’t worry, let’s try again.");
-                                System.out.println();
                                 target = (int) (Math.random() * 11);
                             }
                         } catch (NumberFormatException e) {
@@ -88,7 +134,7 @@ public class CSay implements ICommand {
                 }
             }
 
-            // === Cas spécial : Massomo dans Wizard's Lair (3 énigmes) ===
+            // === Massomo - Wizard's Lair ===
             if (itemName.equals("massomo") && current.getName().equalsIgnoreCase("Wizard's Lair")) {
                 String[][] questions = {
                     { "When I’m fresh, I’m hot. What am I?", "bread" },
@@ -121,7 +167,7 @@ public class CSay implements ICommand {
                 return;
             }
 
-            // === Cas normal : prise d’objet dans la zone ===
+            // === Cas normal : prise d’objet ===
             if (game.getPlayer().getItemByName(itemName) != null) {
                 System.out.println("You already have this item.");
                 return;
@@ -131,7 +177,7 @@ public class CSay implements ICommand {
             if (item != null) {
                 String name = item.getName().toLowerCase();
 
-                if (name.equals("tonton") || name.equals("massomo")) {
+                if (name.equals("tonton") || name.equals("massomo") || name.equals("chris")) {
                     System.out.println("You talked with " + item.getName() + ", but they are not an item to carry.");
                 } else {
                     game.getPlayer().addItem(item);

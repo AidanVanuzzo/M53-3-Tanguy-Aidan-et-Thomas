@@ -91,6 +91,20 @@ public class WorldMap {
         Item lairMassomo = new Item("massomo", "Massomo stands silently by his bookshelf. His eyes sparkle with ancient knowledge.", "Wizard's Lair");
         getLocation(2, 2).addItem(lairMassomo);
 
+        // === Chris au Burger King ===
+        Item wooper = new Item(
+            "wooper",
+            "A Warm Juicy Wooper. It looks delicious.",
+            "Burger King"
+        );
+
+        String chrisIntro = """
+        \nChris: Hello, traveler! Would you like to try one of my delicious Whoppers? (yes/no)
+        """;
+
+        getLocation(0, 1).setNpcPuzzle("Chris", chrisIntro, wooper);
+        getLocation(0, 1).addItem(new Item("chris", "A friendly cook with a paper hat and a spatula in hand.", "Burger King"));
+        
     }
 
     public String getLockedDescription(String locationName) {

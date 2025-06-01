@@ -24,7 +24,7 @@ public class CInventory implements ICommand {
             System.out.println("Your inventory is empty.");
         } else {
             System.out.println();
-            System.out.println("Inventory: (type 'exit' to close)");
+            System.out.println("Your inventory:");
             for (Item item : items) {
                 System.out.println();
                 System.out.println(" - " + item.getName());
@@ -37,12 +37,10 @@ public class CInventory implements ICommand {
 
 
     public void interactiveMenu() {
-        System.out.println("Type 'inspect <item>' or 'use <item>' (type 'exit' to leave):");
         while (true) {
-            System.out.print("> ");
+            System.out.print("Inventory (type 'inspect <object>' 'use <object>' or 'exit') : ");
             String input = scanner.nextLine().toLowerCase().trim();
             System.out.println();
-
             if (input.equals("exit")) {
                 break;
             } else if (input.startsWith("inspect ")) {
