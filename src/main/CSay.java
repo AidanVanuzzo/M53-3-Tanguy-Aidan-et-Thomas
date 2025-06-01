@@ -12,13 +12,12 @@ public class CSay implements ICommand {
     public CSay(Game game) {
         this.game = game;
         this.description = "Allows you to take objects or talk using 'take <name>'.";
-        this.scanner = game.getScanner();  // ✅ Utilisation du scanner global
+        this.scanner = game.getScanner();
     }
 
     @Override
     public void execute() {
-        System.out.println("Type 'take <name>' to take or interact.");
-        System.out.println();
+        System.out.println("Type 'take <name>' to take or interact: ");
         String input = scanner.nextLine().toLowerCase().trim();
 
         if (input.startsWith("take ")) {
@@ -161,7 +160,7 @@ public class CSay implements ICommand {
                 System.out.println();
                 System.out.println("Massomo: Well done. Listen carefully. I won't repeat myself...");
                 System.out.println("\nMassomo: If you’re ever in danger, shout 'Rastapopoulos' and your enemy will explode!\n");
-                System.out.println("[Massomo disappeared in a flash of blue light.]\n");
+                System.out.println("[Massomo disappeared in a flash of green light.]\n");
 
                 current.removeItemByName("massomo");
                 return;
