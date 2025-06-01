@@ -81,7 +81,7 @@ public class CSay implements ICommand {
             }
 
             // === Cas spécial : PNJ (Tonton ou Massomo) ===
-            if (current.hasNpc() && current.isPuzzleActive()) {
+            if (current.hasNpc() && current.isPuzzleActive() && !itemName.equals("crappi")) {
                 String npcName = current.getNpcName().toLowerCase();
                 String npcFirst = npcName.split(" ")[0];
 
@@ -163,6 +163,39 @@ public class CSay implements ICommand {
                 System.out.println("[Massomo disappeared in a flash of green light.]\n");
 
                 current.removeItemByName("massomo");
+                return;
+            }
+
+            // === Crappi Crapo - Cave ===
+            if (itemName.equals("crappi") && current.getName().equalsIgnoreCase("Cave") && current.isPuzzleActive()) {
+                System.out.println("\nCrappi Crapo: Hey Chef, it’s rough being a frog these days. I'm starving out here.");
+                System.out.println("Crappi Crapo: You know what? I’ll give you this key if you bring me something to eat.");
+                System.out.print("Your answer (yes/no): ");
+                String reply = scanner.nextLine().trim().toLowerCase();
+
+                if (reply.equals("yes")) {
+                    if (game.getPlayer().getItemByName("wooper") != null) {
+                        System.out.println("\nCrappi Crapo: Wow, you were fast, boss! Thanks, you've made my day. Take this key, you’ve earned it.");
+                        System.out.println("[You received: Gold Key]\n");
+
+                        Item goldKey = current.getRewardItem();
+                        if (goldKey != null && game.getPlayer().getItemByName(goldKey.getName()) == null) {
+                            game.getPlayer().addItem(goldKey);
+                        }
+
+                        current.removeItemByName("crappi");
+                        current.completePuzzle();
+
+                        System.out.println("Crappi Crapo: Take care, boss. Next time, bring dessert, yeah?\n");
+                    } else {
+                        System.out.println("\nCrappi Crapo: Wait... you're playing games with me? No Wooper, no deal!");
+                        System.out.println("Crappi Crapo: Come back when you have something juicy, boss.\n");
+                    }
+                } else {
+                    System.out.println("\nCrappi Crapo: What? You tease me and then leave me? Not cool, boss.");
+                    System.out.println("Crappi Crapo: Come back when you're serious about feeding a starving frog.\n");
+                }
+
                 return;
             }
 

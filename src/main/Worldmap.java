@@ -105,6 +105,17 @@ public class WorldMap {
         getLocation(0, 1).setNpcPuzzle("Chris", chrisIntro, wooper);
         getLocation(0, 1).addItem(new Item("chris", "A friendly cook with a paper hat and a spatula in hand.", "Burger King"));
         
+        // === Crappi Crapo dans la Cave ===
+        Item crappi = new Item("crappi", "You see a big toad with golden rings and a chef’s hat. He croaks loudly.", "Cave");
+        getLocation(2, 0).addItem(crappi); // Ajout du PNJ visuel
+
+        Item goldKey = new Item("gold key", "A large golden key adorned with diamonds", "Castle");
+        String crappiIntro = """
+        Hey Chef, it’s rough being a frog these days. I'm starving out here.
+        You know what? I’ll give you this key if you bring me something to eat.
+        """;
+        getLocation(2, 0).setNpcPuzzle("Crappi Crapo", crappiIntro, goldKey);
+
     }
 
     public String getLockedDescription(String locationName) {
