@@ -94,7 +94,7 @@ public class Game {
             System.out.println("You can’t go that way.");
             return;
         }
-
+    
         if (target.isLocked()) {
             for (Item item : player.getInventory()) {
                 if (item.getUseZone() != null && item.getUseZone().equalsIgnoreCase(target.getName())) {
@@ -105,15 +105,42 @@ public class Game {
                 }
             }
         }
-
+    
         if (target.isLocked()) {
             System.out.println(worldMap.getLockedDescription(target.getName()));
             return;
         }
-
+    
         updatePlayerLocation(newX, newY);
-        System.out.println(target.getDescription());
-    }
+        System.out.println(target.getDescription()); // Toujours afficher la description d'abord
+    
+        // === Boss final : Alberto dans Castle ===
+        if (target.getName().equalsIgnoreCase("Castle") && target.isPuzzleActive()) {
+            System.out.println("\n[As soon as you step into the castle hall, Alberto charges at you with his sword.]");
+            System.out.println("Alberto: Evil one! I know why you are here. I will slay you!");
+    
+            long startTime = System.currentTimeMillis();
+            System.out.print("\n>> ");
+            String response = scanner.nextLine().trim().toLowerCase();
+            long endTime = System.currentTimeMillis();
+    
+            if ((endTime - startTime) <= 10000 && response.equals("rastapopoulos")) {
+                System.out.println("\nAlberto: BY THE GODS— I SHALL RE— BLAAARRRGHHKABOOM!!");
+                System.out.println("[Alberto explodes and disappears into the corridors of time. A shiny red orb rolls to your feet.]");
+                System.out.println("\n[You received: red orb]\n");
+    
+                Item redOrb = target.getRewardItem();
+                if (redOrb != null && player.getItemByName(redOrb.getName()) == null) {
+                    player.addItem(redOrb);
+                }
+    
+                target.completePuzzle(); // Évite que le boss réapparaisse
+            } else {
+                System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.]");
+                System.exit(0);
+            }
+        }
+    }    
 
     public Player getPlayer() {
         return player;

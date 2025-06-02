@@ -116,6 +116,14 @@ public class WorldMap {
         """;
         getLocation(2, 0).setNpcPuzzle("Crappi Crapo", crappiIntro, goldKey);
 
+        // === Boss final : Alberto dans Castle ===
+        Item redOrb = new Item("red orb", "A mysterious red orb pulsing with energy.", null);
+        getLocation(2, 1).setNpcPuzzle(
+            "Alberto",
+            "As soon as you step into the castle hall, Alberto charges at you with his sword.",
+            redOrb
+        );
+
     }
 
     public String getLockedDescription(String locationName) {
