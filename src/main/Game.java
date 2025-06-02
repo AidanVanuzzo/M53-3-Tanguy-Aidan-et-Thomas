@@ -130,7 +130,7 @@ public class Game {
                 if (response.equals("rastapopoulos")) {
                     System.out.println("\nAlberto: BY THE GODS— I SHALL RE— BLAAARRRGHHKABOOM!!");
                     System.out.println("[Alberto explodes and disappears into the corridors of time. A shiny red orb rolls to your feet.]");
-                    System.out.println("\n[You received: red orb]\n");
+                    System.out.println("\n[You received: red orb]\nYou : Mom will surely know what to do with it.");
 
                     Item redOrb = target.getRewardItem();
                     if (redOrb != null && player.getItemByName(redOrb.getName()) == null) {
