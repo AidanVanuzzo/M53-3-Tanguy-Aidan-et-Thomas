@@ -219,7 +219,14 @@ public class CSay implements ICommand {
                 } else {
                     game.getPlayer().addItem(item);
                     System.out.println();
-                    System.out.println("You picked up: " + item.getName());
+
+                    if (name.equals("crystal")) {
+                        System.out.println("[You piked up: crystal]");
+                        System.out.println("You : Mmmh, maybe I should ask some help to use that");
+                    } else {
+                        System.out.println("[You picked up: " + item.getName() + "]");
+                    }
+
                     System.out.println();
                 }
 

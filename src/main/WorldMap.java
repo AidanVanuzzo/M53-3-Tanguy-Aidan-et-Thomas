@@ -62,7 +62,7 @@ public class WorldMap {
         getLocation(0, 2).addItem(new Item("tonton", "An elegant man in a turquoise silk suit holding a melon. He looks at you with flair.", "Market"));
 
         // === VIP Card de Tonton ===
-        Item vipCard = new Item("vip card", "\nThis shiny VIP card gives you access to unlimited burgers.\n", "Burger King");
+        Item vipCard = new Item("vip card", "\nThis shiny VIP card gives you access to unlimited burgers.", "Burger King");
 
         String tontonIntro = "\nTonton: Hello young man, how are you?\n" +
                 "[A strange card is sticking out of his pocket.]\n" +
@@ -123,6 +123,14 @@ public class WorldMap {
             "As soon as you step into the castle hall, Alberto charges at you with his sword.",
             redOrb
         );
+
+        // === Objet spécial : Crystal (téléporteur)
+        Item crystal = new Item(
+            "crystal",
+            "A magnificent, precious-looking crystal. It seems to exude a strange force.",
+            "Wizard's Lair"
+        );
+        getLocation(2, 2).addItem(crystal);
 
     }
 

@@ -49,6 +49,7 @@ public class CInventory implements ICommand {
                 Item item = game.getPlayer().getItemByName(itemName);
                 if (item != null) {
                     System.out.println(item.getDescription());
+                    System.out.println();
                 } else {
                     System.out.println("You don’t have this item.");
                 }
@@ -104,7 +105,7 @@ public class CInventory implements ICommand {
     
                     } else {
                         System.out.println("You try to use the " + item.getName() + "...");
-                        System.out.println("Nothing happens. Maybe it doesn't work here.");
+                        System.out.println("Nothing happens. Maybe it doesn't work here.\n");
                     }
     
                 } else {

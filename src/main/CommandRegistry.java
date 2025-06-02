@@ -6,47 +6,54 @@ import interfaces.ICommand;
 
 public class CommandRegistry {
 
-    //Liste des commandes disponibles (nom + objets commande)
-    private Map<String, ICommand> commands;
+    private Map<String, ICommand> baseCommands; // Commandes permanentes
+    private Game game;
 
-    //Constructeur qui initialise la map des commandes et insert les commandes du jeu
-    CommandRegistry(Game game) {
-        commands = new HashMap<>();
-        commands.put("help", new CHelp(commands));
-        commands.put("map", new CMap(game.getWorldMap()));
-        commands.put("move", new CMove(game));
-        commands.put("look", new CLook(game));
-        commands.put("say", new CSay(game));  
-        commands.put("inventory", new CInventory(game));
+    public CommandRegistry(Game game) {
+        this.game = game;
+        baseCommands = new HashMap<>();
+
+        // Commandes de base
+        baseCommands.put("help", new CHelp(baseCommands));
+        baseCommands.put("map", new CMap(game.getWorldMap()));
+        baseCommands.put("move", new CMove(game));
+        baseCommands.put("look", new CLook(game));
+        baseCommands.put("say", new CSay(game));
+        baseCommands.put("inventory", new CInventory(game));
     }
 
-    //Méthode pour l'exécution des comandes
     public void commandExecute() {
-        //Scanner pour la saisie
         java.util.Scanner scanner = new java.util.Scanner(System.in);
-        //Stockage de la saisie
         String input;
-        //Boucle qui permet la saisie de commande tant que la partie est active
+
         while (true) {
+            // Génère les commandes dynamiques à chaque tour
+            Map<String, ICommand> currentCommands = new HashMap<>(baseCommands);
+
+            // Si le joueur a le crystal, on ajoute "teleport"
+            if (game.getPlayer().getItemByName("crystal") != null) {
+                currentCommands.put("teleport", new CTeleport(game));
+            }
+
+            // Met à jour la commande help pour qu’elle affiche les commandes actuelles
+            currentCommands.put("help", new CHelp(currentCommands));
+
             System.out.print("Enter a command : ");
             input = scanner.nextLine().toLowerCase();
-            //Si l'utilisateur entre 'quit', on quitte la boucle et termine le jeu
+
             if (input.equals("quit")) {
                 System.out.println("\n[Game over. See you next time.]\n");
                 break;
             }
-            //Appelle la commande correspondante dans la map
-            ICommand command = commands.get(input);
-            //Exécute la commande si elle existe, sinon affiche un message d'erreur
+
+            ICommand command = currentCommands.get(input);
             if (command != null) {
                 command.execute();
             } else {
-                //Incite l'utilisateur à recevoir de l'aide
                 System.out.println("Invalid command. Try 'help'.");
             }
         }
-        //Ferme le scanner en fin de partie
+
         scanner.close();
     }
-    
 }
