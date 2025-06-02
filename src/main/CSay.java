@@ -159,7 +159,7 @@ public class CSay implements ICommand {
 
                 System.out.println();
                 System.out.println("Massomo: Well done. Listen carefully. I won't repeat myself...");
-                System.out.println("\nMassomo: If you’re ever in danger, shout 'Rastapopoulos' and your enemy will explode!\n");
+                System.out.println("\nMassomo: If you’re ever in danger, shout 'rastapopoulos' and your enemy will explode!\n");
                 System.out.println("[Massomo disappeared in a flash of green light.]\n");
 
                 current.removeItemByName("massomo");

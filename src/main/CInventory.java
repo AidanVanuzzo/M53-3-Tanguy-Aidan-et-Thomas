@@ -35,14 +35,15 @@ public class CInventory implements ICommand {
         }
     }
 
-
     public void interactiveMenu() {
         while (true) {
             System.out.print("Inventory (type 'inspect <object>' 'use <object>' or 'exit') : ");
             String input = scanner.nextLine().toLowerCase().trim();
             System.out.println();
+    
             if (input.equals("exit")) {
                 break;
+    
             } else if (input.startsWith("inspect ")) {
                 String itemName = input.substring(8).trim();
                 Item item = game.getPlayer().getItemByName(itemName);
@@ -51,20 +52,22 @@ public class CInventory implements ICommand {
                 } else {
                     System.out.println("You don’t have this item.");
                 }
+    
             } else if (input.startsWith("use ")) {
                 String itemName = input.substring(4).trim();
                 Item item = game.getPlayer().getItemByName(itemName);
+    
                 if (item != null) {
                     if (item.getName().equalsIgnoreCase("vip card")) {
                         int x = game.getPlayerX();
                         int y = game.getPlayerY();
                         WorldMap map = game.getWorldMap();
-
+    
                         boolean isNearBurgerKing =
                             (x == 0 && y == 0) || // Bridge
                             (x == 1 && y == 1) || // House
                             (x == 0 && y == 2);   // Market
-
+    
                         Location burgerKing = map.getLocation(0, 1);
                         if (isNearBurgerKing) {
                             if (burgerKing != null && burgerKing.isLocked()) {
@@ -76,18 +79,43 @@ public class CInventory implements ICommand {
                         } else {
                             System.out.println("\nThis object cannot be used here.\n");
                         }
+    
+                    } else if (item.getName().equalsIgnoreCase("gold key")) {
+                        int x = game.getPlayerX();
+                        int y = game.getPlayerY();
+                        WorldMap map = game.getWorldMap();
+    
+                        boolean isNearCastle =
+                            (x == 1 && y == 1) || // House
+                            (x == 2 && y == 0) || // Cave
+                            (x == 1 && y == 2);   // River
+    
+                        Location castle = map.getLocation(2, 1);
+                        if (isNearCastle) {
+                            if (castle != null && castle.isLocked()) {
+                                castle.setLocked(false);
+                                System.out.println("\n[The gate creaks open with a sinister groan.]\n");
+                            } else {
+                                System.out.println("The Castle is already unlocked.");
+                            }
+                        } else {
+                            System.out.println("\nThis object cannot be used here.\n");
+                        }
+    
                     } else {
                         System.out.println("You try to use the " + item.getName() + "...");
                         System.out.println("Nothing happens. Maybe it doesn't work here.");
                     }
+    
                 } else {
                     System.out.println("You don’t have this item.");
                 }
+    
             } else {
                 System.out.println("Invalid input. Try again.");
             }
         }
-    }
+    }    
 
     @Override
     public String getDescription() {
