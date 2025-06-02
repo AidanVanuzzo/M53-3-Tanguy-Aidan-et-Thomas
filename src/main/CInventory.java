@@ -48,7 +48,7 @@ public class CInventory implements ICommand {
                 String itemName = input.substring(8).trim();
                 Item item = game.getPlayer().getItemByName(itemName);
                 if (item != null) {
-                    System.out.println(item.getDescription());
+                    System.out.println("[" + item.getDescription() + "]");
                     System.out.println();
                 } else {
                     System.out.println("You don’t have this item.");
