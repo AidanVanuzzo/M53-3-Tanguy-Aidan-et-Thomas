@@ -32,7 +32,7 @@ public class CommandRegistry {
             input = scanner.nextLine().toLowerCase();
             //Si l'utilisateur entre 'quit', on quitte la boucle et termine le jeu
             if (input.equals("quit")) {
-                System.out.println("Game over. See you next time :)");
+                System.out.println("\n[Game over. See you next time.]\n");
                 break;
             }
             //Appelle la commande correspondante dans la map
