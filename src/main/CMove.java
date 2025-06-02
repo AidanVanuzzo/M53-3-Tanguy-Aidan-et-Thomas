@@ -72,6 +72,8 @@ public class CMove implements ICommand {
             game.movePlayer(newX, newY);  //Déclenche tout (déplacement + combat)
         }
 
+        
+
         /* 
         if (nextLocation == null) {
             System.out.println("You can't go that way.");
