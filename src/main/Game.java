@@ -21,7 +21,7 @@ public class Game {
     }
 
     public void run() {
-        System.out.println();
+        System.out.println("\n\n\n\n\n\n");
         System.out.println("//////////////////////////////////////////////////////////////////////");
         System.out.println("Welcome, brave warrior!");
         System.out.println("Time is running out...");
