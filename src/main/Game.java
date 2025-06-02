@@ -143,7 +143,7 @@ public class Game {
                     System.exit(0);
                 }
             } catch (java.util.concurrent.TimeoutException e) {
-                System.out.println("\n[You hesitated too long... Alberto struck you down with his sword. YOU ARE DEAD.]");
+                System.out.println("\n\n[You hesitated too long... Alberto struck you down with his sword. YOU ARE DEAD.]");
                 System.exit(0);
             } catch (Exception e) {
                 System.out.println("\n[An unexpected error occurred during the final battle.]");
