@@ -72,7 +72,7 @@ public class CInventory implements ICommand {
                         if (isNearBurgerKing) {
                             if (burgerKing != null && burgerKing.isLocked()) {
                                 burgerKing.setLocked(false);
-                                System.out.println("\nBEEP... The VIP card granted you access. The heavy door slides open with a hiss.\n");
+                                System.out.println("\n[BEEP... The VIP card granted you access. The heavy door slides open with a hiss.]\n");
                             } else {
                                 System.out.println("The Burger King is already unlocked.");
                             }

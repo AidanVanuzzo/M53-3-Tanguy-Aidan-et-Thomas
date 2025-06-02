@@ -177,15 +177,20 @@ public class CSay implements ICommand {
                     if (game.getPlayer().getItemByName("wooper") != null) {
                         System.out.println("\nCrappi Crapo: Wow, you were fast, boss! Thanks, you've made my day. Take this key, you’ve earned it.");
                         System.out.println("\n[You received: Gold Key]\n");
-
+                
+                        // Supprimer le Wooper de l’inventaire
+                        game.getPlayer().getInventory().removeIf(item -> item.getName().equalsIgnoreCase("wooper"));
+                
+                        // Ajouter la Gold Key si elle n’est pas déjà dans l’inventaire
                         Item goldKey = current.getRewardItem();
                         if (goldKey != null && game.getPlayer().getItemByName(goldKey.getName()) == null) {
                             game.getPlayer().addItem(goldKey);
                         }
-
+                
+                        // Supprimer Crappi de la zone et désactiver la quête
                         current.removeItemByName("crappi");
                         current.completePuzzle();
-
+                
                         System.out.println("Crappi Crapo: Take care, boss. Next time, bring dessert, yeah?\n");
                     } else {
                         System.out.println("\nCrappi Crapo: Wait... you're playing games with me? No Wooper, no deal!");
@@ -195,8 +200,8 @@ public class CSay implements ICommand {
                     System.out.println("\nCrappi Crapo: What? You tease me and then leave me? Not cool, boss.");
                     System.out.println("Crappi Crapo: Come back when you're serious about feeding a starving frog.\n");
                 }
-
-                return;
+                
+                return;                
             }
 
             // === Cas normal : prise d’objet ===
