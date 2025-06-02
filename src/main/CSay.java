@@ -26,7 +26,7 @@ public class CSay implements ICommand {
 
             // === CHRIS Burger King ===
             if (itemName.equals("chris") && current.getName().equalsIgnoreCase("Burger King") && current.isPuzzleActive()) {
-                System.out.println("\nChris: Hello, traveler! Would you like to try one of my delicious Whoppers? (yes/no)");
+                System.out.println("\nChris: Hello, traveler! Would you like to try one of my delicious Woopers? (yes/no)");
                 System.out.print("Your answer: ");
                 String reply = scanner.nextLine().trim().toLowerCase();
 
@@ -60,7 +60,7 @@ public class CSay implements ICommand {
                     }
 
                     if (correct) {
-                        System.out.println("\nChris: BOOOOOOYYAAA! You’re worthy of my culinary talent. Here, take a Whopper, you’ve earned it.");
+                        System.out.println("\nChris: BOOOOOOYYAAA! You’re worthy of my culinary talent. Here, take a Woopper, you’ve earned it.");
                         Item wooper = new Item(
                             "wooper",
                             "A Warm Juicy Wooper. It looks delicious.",
