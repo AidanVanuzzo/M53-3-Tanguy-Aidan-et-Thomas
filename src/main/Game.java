@@ -123,14 +123,14 @@ public class Game {
         System.out.println("[You hand her the orb, and mom uses her powerful mage abilities to restore peace to the world.]");
         System.out.println("[She makes you a hot chocolate, and you enjoy your well-deserved weekend.]\n");
 
-        System.out.println("///////////////////*EPILOGUE*///////////////////");
+        System.out.println("////////////////////////////***EPILOGUE***////////////////////////////");
         System.out.println("Crappi Crappo will be hired as a cook at Burger King.");
         System.out.println("Chris will be promoted to Regional Assistant to the Burger King Manager.");
         System.out.println("Massamo will enjoy a peaceful retirement in the Balearic Islands.");
         System.out.println("Tonton will take over Alberto's castle and crown himself Supreme Leader of the kingdom,");
         System.out.println("deviously preparing his plan to steal the sacred orb.");
-        System.out.println("////////////////////////////////////////////////");
-        System.out.println("\n[A game by Tanguy Vaucher, Thomas Delacétaz, Aidan Vanuzzo.]");
+        System.out.println("//////////////////////////////////////////////////////////////////////");
+        System.out.println("\n[A game by Tanguy Vaucher, Thomas Delacétaz, Aidan Vanuzzo]\n");
 
         System.exit(0);
         }
