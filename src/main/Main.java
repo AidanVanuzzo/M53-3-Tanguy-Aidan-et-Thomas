@@ -3,8 +3,9 @@ package main;
 public class Main {
 
     /*
-    1) Castle : Coder dialogue Alberto (Tue après 10 Sec) --> Win : Ajouer 'orbe' à l'inventaire
-    2) End-Game donner orbe à Maman + Text & Crédits
+    0) Bug Push WorldMap.java
+    1) Castle : Coder dialogue Alberto (Tue après 10 Sec --> Quit) --> Win : 'orbe' ajouté à l'inventaire
+    2) End-Game donner orbe à Maman + Text final & Crédits --> Quit
     3) Devoir 6
     4) Commentaires + Debug
     */
