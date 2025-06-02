@@ -71,7 +71,7 @@ public class CSay implements ICommand {
                         current.removeItemByName("chris");
                         current.completePuzzle();
                     } else {
-                        System.out.println("Chris: Ah, that’s incorrect. You don’t know what you’re missing, my friend.");
+                        System.out.println("\nChris: Ah, that’s incorrect. You don’t know what you’re missing, my friend.");
                     }
                     return;
                 } else {
