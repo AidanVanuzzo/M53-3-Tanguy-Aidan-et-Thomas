@@ -22,7 +22,7 @@ public class Game {
 
     public void run() {
         System.out.println();
-        System.out.println("/////////////////////////////////////////////////////////////////////");
+        System.out.println("//////////////////////////////////////////////////////////////////////");
         System.out.println("Welcome, brave warrior!");
         System.out.println("Time is running out...");
         System.out.println("You must stop Lord Alberto before his dark powers destroy our world!");
