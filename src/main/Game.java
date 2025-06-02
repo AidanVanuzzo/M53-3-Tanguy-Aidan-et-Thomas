@@ -118,26 +118,38 @@ public class Game {
         if (target.getName().equalsIgnoreCase("Castle") && target.isPuzzleActive()) {
             System.out.println("\n[As soon as you step into the castle hall, Alberto charges at you with his sword.]");
             System.out.println("Alberto: Evil one! I know why you are here. I will slay you!");
-    
-            long startTime = System.currentTimeMillis();
+
             System.out.print("\n>> ");
-            String response = scanner.nextLine().trim().toLowerCase();
-            long endTime = System.currentTimeMillis();
-    
-            if ((endTime - startTime) <= 10000 && response.equals("rastapopoulos")) {
-                System.out.println("\nAlberto: BY THE GODS— I SHALL RE— BLAAARRRGHHKABOOM!!");
-                System.out.println("[Alberto explodes and disappears into the corridors of time. A shiny red orb rolls to your feet.]");
-                System.out.println("\n[You received: red orb]\n");
-    
-                Item redOrb = target.getRewardItem();
-                if (redOrb != null && player.getItemByName(redOrb.getName()) == null) {
-                    player.addItem(redOrb);
+
+            java.util.concurrent.ExecutorService executor = java.util.concurrent.Executors.newSingleThreadExecutor();
+            java.util.concurrent.Future<String> future = executor.submit(() -> scanner.nextLine().trim().toLowerCase());
+
+            try {
+                String response = future.get(10, java.util.concurrent.TimeUnit.SECONDS);
+
+                if (response.equals("rastapopoulos")) {
+                    System.out.println("\nAlberto: BY THE GODS— I SHALL RE— BLAAARRRGHHKABOOM!!");
+                    System.out.println("[Alberto explodes and disappears into the corridors of time. A shiny red orb rolls to your feet.]");
+                    System.out.println("\n[You received: red orb]\n");
+
+                    Item redOrb = target.getRewardItem();
+                    if (redOrb != null && player.getItemByName(redOrb.getName()) == null) {
+                        player.addItem(redOrb);
+                    }
+
+                    target.completePuzzle(); // Évite que le boss réapparaisse
+                } else {
+                    System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.]");
+                    System.exit(0);
                 }
-    
-                target.completePuzzle(); // Évite que le boss réapparaisse
-            } else {
-                System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.]");
+            } catch (java.util.concurrent.TimeoutException e) {
+                System.out.println("\n[You hesitated too long... Alberto struck you down with his sword. YOU ARE DEAD.]");
                 System.exit(0);
+            } catch (Exception e) {
+                System.out.println("\n[An unexpected error occurred during the final battle.]");
+                e.printStackTrace();
+            } finally {
+                executor.shutdownNow();
             }
         }
     }    

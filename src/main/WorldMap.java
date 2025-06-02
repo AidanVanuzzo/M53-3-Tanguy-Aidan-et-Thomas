@@ -40,7 +40,7 @@ public class WorldMap {
 
         setLocation(0, 2, new Location("Market", "[A busy place full of merchants.]"));
         setLocation(1, 2, new Location("River", "[A relaxing flowing river.]"));
-        setLocation(2, 2, new Location("Wizard's Lair", "[The tower of Massamo the great wizard.]"));
+        setLocation(2, 2, new Location("Wizard's Lair", "[The tower of Massomo the great wizard.]"));
 
         // === Zones verrouillées par défaut ===
         getLocation(0, 1).setLocked(true); // Burger King
