@@ -3,6 +3,7 @@ package main;
 public class Main {
 
     /*
+    0) Ajouter 'quit' a CHelp
     1) Cteleport ('teleport <lieu>' (sauf si locked) quand on a l'objet crystal la commande s'ajoute dans help)
     2) CSave (sauvegarde la progression du joueur) + Permet de rejouer ou recharger la partie précédente (exécute toutes les commandes à la suite)
     +) Debug (retester les cas interdits) + Commenter le code + Améliorer la fluidité du texte autant que possible
