@@ -11,7 +11,7 @@ public class CSay implements ICommand {
 
     public CSay(Game game) {
         this.game = game;
-        this.description = "Allows you to take objects or talk using 'take <name>'.";
+        this.description = "Allows you to take objects or talk with the NPCs using 'take <name>'.";
         this.scanner = game.getScanner();
     }
 
