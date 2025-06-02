@@ -4,7 +4,9 @@ public class Main {
 
     /*
     1) CSave (sauvegarde la progression du joueur) + Permet de rejouer ou recharger la partie précédente (exécute toutes les commandes à la suite)
-    +) Debug (retester les cas interdits) + Commenter le code + Améliorer la fluidité du texte autant que possible
+    +) Debug (tester les cas interdits)
+    +) Commenter le code
+    +) Améliorer la fluidité du texte autant que possible
     */
 
     public static void main(String[] args) {
