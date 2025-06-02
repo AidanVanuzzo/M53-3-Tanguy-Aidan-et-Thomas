@@ -62,7 +62,7 @@ public class CSay implements ICommand {
                     if (correct) {
                         System.out.println("\nChris: BOOOOOOYYAAA! You’re worthy of my culinary talent. Here, take a Whopper, you’ve earned it.");
                         Item wooper = new Item(
-                            "Wooper",
+                            "wooper",
                             "A Warm Juicy Wooper. It looks delicious.",
                             null
                         );
