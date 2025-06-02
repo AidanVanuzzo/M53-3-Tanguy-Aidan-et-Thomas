@@ -25,7 +25,7 @@ public class CHelp implements ICommand {
         printCommand("look");
         printCommand("say");
         printCommand("inventory");
-        System.out.println(" quit - quits the game\n");
+        System.out.println(" quit - exit the game\n");
     }
 
     private void printCommand(String name) {
