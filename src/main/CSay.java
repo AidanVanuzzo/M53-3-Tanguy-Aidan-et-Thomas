@@ -210,7 +210,7 @@ public class CSay implements ICommand {
                 String name = item.getName().toLowerCase();
 
                 if (name.equals("tonton") || name.equals("massomo") || name.equals("chris")) {
-                    System.out.println("You talked with " + item.getName() + ", but they are not an item to carry.");
+                    System.out.println("You talked with " + item.getName() + ".");
                 } else {
                     game.getPlayer().addItem(item);
                     System.out.println();
