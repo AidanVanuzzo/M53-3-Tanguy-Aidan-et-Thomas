@@ -48,7 +48,7 @@ public class Game {
         System.out.println();
         System.out.println("Mom: You're welcome! Be careful out there. [You leave the house]");
         System.out.println();
-        System.out.println("Type 'help' to discover the commands (To exit, type 'quit').");
+        System.out.println("Advice: Type 'help' to discover the commands.");
 
         registry = new CommandRegistry(this);
         registry.commandExecute();
