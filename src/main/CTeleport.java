@@ -10,7 +10,7 @@ public class CTeleport implements ICommand {
     private Scanner scanner;
 
     public CTeleport(Game game) {
-        this.description = "Enables you to move from one zone to another.";
+        this.description = "Enables you to move directly from one zone to another.";
         this.game = game;
         this.scanner = game.getScanner();
     }
