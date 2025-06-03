@@ -39,7 +39,8 @@ public class Game {
         if (loadRequested) {
             loadState(); // restaure la position, inventaire, progression...
             registry = new CommandRegistry(this);
-            System.out.println("\n[Save loaded successfully!]");
+            System.out.println("\n[Save loaded successfully!]\n");
+            System.out.println(getCurrentLocation().getDescription()); 
             registry.commandExecute();
             return;
         }
@@ -265,7 +266,7 @@ public class Game {
                     if (item != null) {
                         player.addItem(item);
     
-                        // Supprime l’objet de toutes les zones pour éviter doublon
+                        // Supprimer cet item de toutes les zones pour éviter les doublons
                         for (int y = 0; y < worldMap.getWorldMap().length; y++) {
                             for (int x = 0; x < worldMap.getWorldMap()[y].length; x++) {
                                 Location loc = worldMap.getLocation(x, y);
@@ -290,11 +291,42 @@ public class Game {
                 }
             }
     
+            // === Nettoyage PNJ après lecture ===
+            for (int y = 0; y < worldMap.getWorldMap().length; y++) {
+                for (int x = 0; x < worldMap.getWorldMap()[y].length; x++) {
+                    Location loc = worldMap.getLocation(x, y);
+                    if (loc == null) continue;
+    
+                    // Tonton (VIP card)
+                    if (loc.getName().equalsIgnoreCase("Market") &&
+                        player.getItemByName("vip card") != null) {
+                        loc.removeItem("tonton");
+                    }
+    
+                    // Chris (Wooper ou Gold Key)
+                    if (loc.getName().equalsIgnoreCase("Burger King") &&
+                        (player.getItemByName("wooper") != null || player.getItemByName("gold key") != null)) {
+                        loc.removeItem("chris");
+                    }
+    
+                    // Crappi Crapo (Gold Key)
+                    if (loc.getName().equalsIgnoreCase("Cave") &&
+                        player.getItemByName("gold key") != null) {
+                        loc.removeItem("crappi");
+                    }
+    
+                    // Alberto (Red Orb)
+                    if (loc.getName().equalsIgnoreCase("Castle") &&
+                        player.getItemByName("red orb") != null) {
+                        loc.completePuzzle(); // évite la réapparition du boss
+                    }
+                }
+            }
+    
         } catch (IOException e) {
             System.out.println("[Failed to load game state]");
             e.printStackTrace();
         }
-    }    
-    
+    }      
     
 }

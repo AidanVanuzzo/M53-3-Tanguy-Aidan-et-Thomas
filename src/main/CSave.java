@@ -17,6 +17,6 @@ public class CSave implements ICommand {
 
     @Override
     public String getDescription() {
-        return "save - sauvegarde la progression du joueur";
+        return "sauvegarde la progression du joueur";
     }
 }

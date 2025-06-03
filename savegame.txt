@@ -1,7 +1,7 @@
 position:2,0
 item:picture of tonton
 item:VIP card
-item:gold key
+item:crystal
 discovered:0,0
 unlocked:0,0
 puzzle:0,0
@@ -10,10 +10,8 @@ unlocked:1,0
 puzzle:1,0
 discovered:2,0
 unlocked:2,0
-puzzle:2,0
 discovered:0,1
 unlocked:0,1
-puzzle:0,1
 discovered:1,1
 unlocked:1,1
 puzzle:1,1

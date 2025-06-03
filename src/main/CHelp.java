@@ -26,6 +26,7 @@ public class CHelp implements ICommand {
         printCommand("say");
         printCommand("inventory");
         printCommand("teleport");
+        printCommand("save");
         System.out.println(" quit - Exit the game\n");
     }
 

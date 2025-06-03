@@ -43,7 +43,7 @@ public class CommandRegistry {
             input = scanner.nextLine().toLowerCase();
 
             if (input.equals("quit")) {
-                System.out.println("\n[Game over. See you next time.]\n");
+                System.out.println("\n[See you next time.]\n");
                 break;
             }
 
