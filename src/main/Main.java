@@ -2,10 +2,7 @@ package main;
 
 public class Main {
 
-    /*
-    (Teleport > WorldMap)
-    (Inventory > Game > Say)
-    */
+    /***(WorldMap > Inventory > Game > Say)***/
 
     public static void main(String[] args) {
         //Création d'une nouvelle partie

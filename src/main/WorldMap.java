@@ -157,7 +157,7 @@ public class WorldMap {
         return map;
     }
 
-    //Save
+    //Save - Permet de restaurer les Items du joueur
     public Item createRestoredItem(String name) {
         switch (name.toLowerCase()) {
             case "vip card":
@@ -188,5 +188,4 @@ public class WorldMap {
                 return new Item(name, "Restored item.", null);
         }
     }    
-    
 }
