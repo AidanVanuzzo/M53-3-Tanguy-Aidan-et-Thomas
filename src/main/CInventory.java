@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class CInventory implements ICommand {
 
     private String description;
+    //Référence à l'instance actuelle du jeu
     private Game game;
     private Scanner scanner;
 

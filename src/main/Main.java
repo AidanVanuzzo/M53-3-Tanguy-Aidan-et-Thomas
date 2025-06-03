@@ -3,7 +3,7 @@ package main;
 public class Main {
 
     /*
-    (Location > Teleport > WorldMap)
+    (Teleport > WorldMap)
     (Inventory > Game > Say)
     */
 
