@@ -136,7 +136,7 @@ public class Game {
         }
     
         updatePlayerLocation(newX, newY);
-        System.out.println(target.getDescription()); // Toujours afficher la description d'abord
+        System.out.println(target.getDescription());
 
         // === Fin du jeu si joueur retourne à la maison avec l’orbe rouge ===
         if (target.getName().equalsIgnoreCase("House") &&
@@ -182,7 +182,7 @@ public class Game {
                         player.addItem(redOrb);
                     }
 
-                    target.completePuzzle(); // Évite que le boss réapparaisse
+                    target.completePuzzle();
                 } else {
                     System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.]\n");
                     System.exit(0);
@@ -266,7 +266,6 @@ public class Game {
                     if (item != null) {
                         player.addItem(item);
     
-                        // Supprimer cet item de toutes les zones pour éviter les doublons
                         for (int y = 0; y < worldMap.getWorldMap().length; y++) {
                             for (int x = 0; x < worldMap.getWorldMap()[y].length; x++) {
                                 Location loc = worldMap.getLocation(x, y);

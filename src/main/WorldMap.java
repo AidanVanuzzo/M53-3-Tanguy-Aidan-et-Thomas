@@ -182,7 +182,7 @@ public class WorldMap {
                 return new Item("picture of tonton", "The strange-looking man wears a big red hat and a green suit.", "River");
     
             case "massomo token":
-                return new Item("massomo token", "", null); // marqueur invisible
+                return new Item("massomo token", "", null);
     
             default:
                 return new Item(name, "Restored item.", null);

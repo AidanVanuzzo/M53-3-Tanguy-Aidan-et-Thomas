@@ -69,25 +69,7 @@ public class CMove implements ICommand {
             System.out.println(lockedMsg);
             game.getWorldMap().getWorldMap()[newY][newX] = nextLocation;
         } else {
-            game.movePlayer(newX, newY);  //Déclenche tout (déplacement + combat)
+            game.movePlayer(newX, newY);
         }
-
-        
-
-        /* 
-        if (nextLocation == null) {
-            System.out.println("You can't go that way.");
-        } else if (nextLocation.isLocked()) {
-            nextLocation.setDiscovered(true);
-            String lockedMsg = game.getWorldMap().getLockedDescription(nextLocation.getName());
-            System.out.println(lockedMsg);
-            game.getWorldMap().getWorldMap()[newY][newX] = nextLocation;
-        } else {
-            game.setPlayerX(newX);
-            game.setPlayerY(newY);
-            System.out.println(nextLocation.getDescription());
-            System.out.println();
-        }
-        */
     }
 }

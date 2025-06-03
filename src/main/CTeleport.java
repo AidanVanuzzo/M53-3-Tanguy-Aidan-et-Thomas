@@ -41,7 +41,7 @@ public class CTeleport implements ICommand {
 
                     System.out.println("[You teleport in a flash of green light!]");
                     System.out.println();
-                    game.movePlayer(x, y); // Déclenche les effets normaux du déplacement
+                    game.movePlayer(x, y);
                     return;
                 }
             }

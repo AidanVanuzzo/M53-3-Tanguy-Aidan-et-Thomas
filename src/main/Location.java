@@ -32,7 +32,6 @@ public class Location implements IPrintable {
         this.rewardItem = null;
     }
 
-    //Getters et Setters
     public String getName() {
         return name;
     }
