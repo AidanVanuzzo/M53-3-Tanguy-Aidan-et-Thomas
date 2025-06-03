@@ -151,8 +151,8 @@ public class Game {
         System.out.println("Crappi Crappo will be hired as a cook at Burger King.");
         System.out.println("Chris will be promoted to Regional Assistant to the Burger King Manager.");
         System.out.println("Massamo will enjoy a peaceful retirement in the Balearic Islands.");
-        System.out.println("Tonton will take over Alberto's castle and crown himself Supreme Leader of the kingdom,");
-        System.out.println("deviously preparing his plan to steal the sacred orb.");
+        System.out.println("Tonton will take over Alberto's castle and crown himself Supreme Leader of the kingdom...");
+        System.out.println("...deviously preparing his plan to steal the sacred orb.");
         System.out.println("//////////////////////////////////////////////////////////////////////");
         System.out.println("\n[A game by Tanguy Vaucher, Thomas Delacétaz, Aidan Vanuzzo]\n");
 
@@ -184,7 +184,7 @@ public class Game {
 
                     target.completePuzzle(); // Évite que le boss réapparaisse
                 } else {
-                    System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.]");
+                    System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.\n]");
                     System.exit(0);
                 }
             } catch (java.util.concurrent.TimeoutException e) {
@@ -321,16 +321,16 @@ public class Game {
                         loc.completePuzzle(); // évite la réapparition du boss
                     }
 
-                    // Massomo à Bridge : si Massomo n'est plus là, on s'assure que le message est présent
+                    // === Massomo à Bridge : ajustement dynamique ===
                     if (loc.getName().equalsIgnoreCase("Bridge")) {
-                        Location wizardLair = worldMap.getLocation(2, 0); // Wizard's Lair
+                        Location wizardLair = worldMap.getLocation(2, 2); // Wizard's Lair
                         if (wizardLair != null) {
                             boolean wizardUnlocked = !wizardLair.isLocked();
                             boolean massomoPresent = loc.getItemByName("massomo") != null;
                             boolean messagePresent = loc.getItemByName("[There is a message painted on the floor: Meet me in my tower and I will teach you the ultimate power.]") != null;
-                    
+
                             if (wizardUnlocked) {
-                                // Si la tour est déjà ouverte : on vire Massomo, on affiche le message
+                                // La tour est ouverte : on retire Massomo et on affiche le message
                                 if (massomoPresent) {
                                     loc.removeItem("massomo");
                                 }
@@ -343,9 +343,9 @@ public class Game {
                                     loc.addItem(parchment);
                                 }
                             } else {
-                                // Si la tour est encore verrouillée : on remet Massomo et on vire le message si présent
+                                // La tour est verrouillée : on remet Massomo et on retire le message
                                 if (!massomoPresent) {
-                                    Item massomo = new Item("massomo", "", "Bridge");
+                                    Item massomo = new Item("massomo", "You see Massomo meditating above the river. His eyes open slowly when you approach.", "Bridge");
                                     loc.addItem(massomo);
                                 }
                                 if (messagePresent) {
@@ -353,12 +353,12 @@ public class Game {
                                 }
                             }
                         }
-                    }                    
+                    }
 
-                    // Massomo (Wizard's Lair) — si on a déjà résolu ses énigmes
+                    // === Massomo à Wizard's Lair : suppression si déjà vaincu ===
                     if (loc.getName().equalsIgnoreCase("Wizard's Lair") &&
-                    player.getItemByName("massomo token") != null) {
-                    loc.removeItem("massomo");
+                        player.getItemByName("massomo token") != null) {
+                        loc.removeItem("massomo");
                     }
                     
                 }
