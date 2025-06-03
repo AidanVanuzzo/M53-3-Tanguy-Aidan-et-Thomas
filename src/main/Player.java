@@ -8,7 +8,7 @@ public class Player {
     //Position actuelle du joueur
     private Location currentLocation;
 
-    // [01.06.2025] Inventaire du joueur
+    //Inventaire du joueur
     private List<Item> inventory;
 
     //Constructeur
@@ -27,17 +27,17 @@ public class Player {
         this.currentLocation = location;
     }
 
-    // [01.06.2025] Ajoute un objet à l'inventaire
+    //Ajout d'un objet à l'inventaire
     public void addItem(Item item) {
         inventory.add(item);
     }
 
-    // [01.06.2025] Récupère l'inventaire du joueur
+    //Récupère l'inventaire du joueur
     public List<Item> getInventory() {
         return inventory;
     }
 
-    // [01.06.2025] Récupère un objet par son nom
+    //Récupère un objet par son nom dans l'inventaire (pour inspect, use, etc.)
     public Item getItemByName(String name) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -47,10 +47,9 @@ public class Player {
         return null;
     }
 
-    // Ajoute cette méthode dans ta classe Player
-
+    //Getter pour récupérer le nom du joueur (toujours 'Player')
     public String getName() {
-        return "Player"; // Ou retourne un vrai nom si tu veux le personnaliser plus tard
+        return "Player";
     }
 
 }
