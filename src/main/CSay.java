@@ -254,10 +254,10 @@ public class CSay implements ICommand {
                 }
 
             } else {
-                System.out.println("There is no such item or character here.");
+                System.out.println("There is no such item or character here.\n");
             }
         } else {
-            System.out.println("Invalid format. Use: take <name>");
+            System.out.println("Invalid format. Use: 'take <name>' next time.\n");
         }
     }
 

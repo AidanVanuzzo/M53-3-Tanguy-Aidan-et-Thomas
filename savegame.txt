@@ -1,6 +1,7 @@
-position:1,1
+position:1,0
 unlocked:0,0
 puzzle:0,0
+discovered:1,0
 unlocked:1,0
 puzzle:1,0
 unlocked:2,0

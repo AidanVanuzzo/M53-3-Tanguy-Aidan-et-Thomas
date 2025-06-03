@@ -39,7 +39,7 @@ public class Game {
         if (loadRequested) {
             loadState(); // restaure la position, inventaire, progression...
             registry = new CommandRegistry(this);
-            System.out.println("\n[Save loaded successfully!]\n");
+            System.out.println("\n--Save loaded successfully!--\n");
             System.out.println(getCurrentLocation().getDescription()); 
             registry.commandExecute();
             return;
