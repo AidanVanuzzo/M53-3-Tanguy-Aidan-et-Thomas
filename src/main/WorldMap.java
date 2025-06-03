@@ -161,18 +161,32 @@ public class WorldMap {
     public Item createRestoredItem(String name) {
         switch (name.toLowerCase()) {
             case "vip card":
-                return new Item("VIP card", "A special card that grants you access to Burger King.", "Burger King");
+                return new Item("vip card", "This shiny VIP card gives you access to unlimited burgers.", "Burger King");
+    
             case "wooper":
-                return new Item("Wooper", "A Warm Juicy Wooper. It looks delicious.", null);
+                return new Item("wooper", "A Warm Juicy Wooper. It looks delicious.", null);
+    
             case "gold key":
-                return new Item("gold key", "A shiny golden key. It must unlock something.", "Castle");
+                return new Item("gold key", "A large golden key adorned with diamonds", "Castle");
+    
             case "red orb":
-                return new Item("red orb", "A mysterious glowing orb. It pulses with energy.", null);
+                return new Item("red orb", "A mysterious red orb pulsing with energy.", null);
+    
             case "crystal":
-                return new Item("crystal", "A glowing crystal. You feel it could teleport you somewhere.", null);
+                return new Item("crystal", "A magnificent, precious-looking crystal. It seems to exude a strange force.", "Wizard's Lair");
+    
+            case "clean pitchfork":
+                return new Item("clean pitchfork", "Oddly shiny and completely clean. Nobody dares to touch it.", "Farm");
+    
+            case "picture of tonton":
+                return new Item("picture of tonton", "The strange-looking man wears a big red hat and a green suit.", "River");
+    
+            case "massomo token":
+                return new Item("massomo token", "", null); // marqueur invisible
+    
             default:
                 return new Item(name, "Restored item.", null);
         }
-    }
+    }    
     
 }

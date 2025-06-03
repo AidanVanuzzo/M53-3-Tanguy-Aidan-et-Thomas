@@ -1,7 +1,7 @@
-position:1,2
+position:0,2
 item:massomo token
 item:crystal
-item:vip card
+item:VIP card
 item:picture of tonton
 discovered:0,0
 unlocked:0,0
