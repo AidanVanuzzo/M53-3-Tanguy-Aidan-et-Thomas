@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Scanner;
+
 public class Main {
 
     /*
@@ -10,10 +12,18 @@ public class Main {
     */
 
     public static void main(String[] args) {
-        //Crée une instance de Game pour initialiser une nouvelle partie
-        Game game = new Game();
-        //Affiche les instructions et attend les commandes du joueur
-        game.run();    
+    Game game = new Game();
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Do you want to load the last save or start a new game? (load/new): ");
+    String choice = scanner.nextLine().trim().toLowerCase();
+
+    if (choice.equals("load")) {
+        game.setLoadRequested(true);
     }
+
+    game.run(); // la logique continue dans Game.java
+}
+
 
 }

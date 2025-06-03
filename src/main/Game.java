@@ -1,5 +1,11 @@
 package main;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -13,6 +19,14 @@ public class Game {
     private Player player;
     private Location startingLocation;
 
+    //Save
+    private boolean loadRequested = false;
+
+    public void setLoadRequested(boolean loadRequested) {
+        this.loadRequested = loadRequested;
+    }
+
+
     public Game() {
         this.worldMap = new WorldMap();
         this.worldMap.setGame(this);
@@ -21,6 +35,15 @@ public class Game {
     }
 
     public void run() {
+        //Save
+        if (loadRequested) {
+            loadState(); // restaure la position, inventaire, progression...
+            registry = new CommandRegistry(this);
+            System.out.println("\n[Save loaded successfully!]");
+            registry.commandExecute();
+            return;
+        }
+
         System.out.println("\n\n\n\n\n\n");
         System.out.println("//////////////////////////////////////////////////////////////////////");
         System.out.println("Welcome, brave warrior!");
@@ -182,5 +205,96 @@ public class Game {
     public Scanner getScanner() {
         return this.scanner;
     }
+
+    //Gestion Save
+    public void saveState() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("savegame.txt"))) {
+
+            // Position
+            writer.write("position:" + playerX + "," + playerY);
+            writer.newLine();
+
+            // Inventaire
+            for (Item item : player.getInventory()) {
+                writer.write("item:" + item.getName());
+                writer.newLine();
+            }
+
+            // Zones découvertes, déverrouillées, puzzles résolus
+            for (int y = 0; y < worldMap.getWorldMap().length; y++) {
+                for (int x = 0; x < worldMap.getWorldMap()[y].length; x++) {
+                    Location loc = worldMap.getLocation(x, y);
+                    if (loc != null) {
+                        if (loc.isDiscovered()) {
+                            writer.write("discovered:" + x + "," + y);
+                            writer.newLine();
+                        }
+                        if (!loc.isLocked()) {
+                            writer.write("unlocked:" + x + "," + y);
+                            writer.newLine();
+                        }
+                        if (!loc.isPuzzleActive()) {
+                            writer.write("puzzle:" + x + "," + y);
+                            writer.newLine();
+                        }
+                    }
+                }
+            }
+
+            System.out.println("\n[Game saved successfully!]");
+        } catch (IOException e) {
+            System.out.println("[Failed to save game state]");
+            e.printStackTrace();
+        }
+    }
+
+    public void loadState() {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("savegame.txt"));
+    
+            for (String line : lines) {
+                if (line.startsWith("position:")) {
+                    String[] coords = line.substring(9).split(",");
+                    int x = Integer.parseInt(coords[0]);
+                    int y = Integer.parseInt(coords[1]);
+                    setPlayerX(x);
+                    setPlayerY(y);
+                } else if (line.startsWith("item:")) {
+                    String itemName = line.substring(5).trim();
+                    Item item = worldMap.createRestoredItem(itemName);
+                    if (item != null) {
+                        player.addItem(item);
+    
+                        // Supprime l’objet de toutes les zones pour éviter doublon
+                        for (int y = 0; y < worldMap.getWorldMap().length; y++) {
+                            for (int x = 0; x < worldMap.getWorldMap()[y].length; x++) {
+                                Location loc = worldMap.getLocation(x, y);
+                                if (loc != null) {
+                                    loc.removeItem(itemName);
+                                }
+                            }
+                        }
+                    }
+                } else if (line.startsWith("discovered:")) {
+                    String[] coords = line.substring(11).split(",");
+                    Location loc = worldMap.getLocation(Integer.parseInt(coords[0]), Integer.parseInt(coords[1]));
+                    if (loc != null) loc.setDiscovered(true);
+                } else if (line.startsWith("unlocked:")) {
+                    String[] coords = line.substring(9).split(",");
+                    Location loc = worldMap.getLocation(Integer.parseInt(coords[0]), Integer.parseInt(coords[1]));
+                    if (loc != null) loc.setLocked(false);
+                } else if (line.startsWith("puzzle:")) {
+                    String[] coords = line.substring(7).split(",");
+                    Location loc = worldMap.getLocation(Integer.parseInt(coords[0]), Integer.parseInt(coords[1]));
+                    if (loc != null) loc.completePuzzle();
+                }
+            }
+    
+        } catch (IOException e) {
+            System.out.println("[Failed to load game state]");
+            e.printStackTrace();
+        }
+    }    
+    
     
 }

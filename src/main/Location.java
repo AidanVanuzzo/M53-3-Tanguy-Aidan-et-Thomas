@@ -121,4 +121,10 @@ public class Location implements IPrintable {
     public boolean isGrayedOut() {
         return locked || !discovered;
     }
+
+    //Save - retirer item
+    public void removeItem(String itemName) {
+    items.removeIf(item -> item.getName().equalsIgnoreCase(itemName));
+    }
+
 }

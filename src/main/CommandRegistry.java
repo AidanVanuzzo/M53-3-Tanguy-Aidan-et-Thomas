@@ -19,6 +19,7 @@ public class CommandRegistry {
         baseCommands.put("move", new CMove(game));
         baseCommands.put("look", new CLook(game));
         baseCommands.put("say", new CSay(game));
+        baseCommands.put("save", new CSave(game));
         baseCommands.put("inventory", new CInventory(game));
     }
 

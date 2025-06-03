@@ -156,4 +156,23 @@ public class WorldMap {
     public Location[][] getWorldMap() {
         return map;
     }
+
+    //Save
+    public Item createRestoredItem(String name) {
+        switch (name.toLowerCase()) {
+            case "vip card":
+                return new Item("VIP card", "A special card that grants you access to Burger King.", "Burger King");
+            case "wooper":
+                return new Item("Wooper", "A Warm Juicy Wooper. It looks delicious.", null);
+            case "gold key":
+                return new Item("gold key", "A shiny golden key. It must unlock something.", "Castle");
+            case "red orb":
+                return new Item("red orb", "A mysterious glowing orb. It pulses with energy.", null);
+            case "crystal":
+                return new Item("crystal", "A glowing crystal. You feel it could teleport you somewhere.", null);
+            default:
+                return new Item(name, "Restored item.", null);
+        }
+    }
+    
 }
