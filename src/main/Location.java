@@ -127,4 +127,13 @@ public class Location implements IPrintable {
     items.removeIf(item -> item.getName().equalsIgnoreCase(itemName));
     }
 
+    public Item getItemByName(String name) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item;
+            }
+        }
+        return null;
+    }    
+
 }

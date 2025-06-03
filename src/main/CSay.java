@@ -162,6 +162,10 @@ public class CSay implements ICommand {
                 System.out.println("\nMassomo: If you’re ever in danger, shout 'rastapopoulos' and your enemy will explode!\n");
                 System.out.println("[Massomo disappeared in a flash of green light.]\n");
 
+                // Ajoute un objet invisible pour marquer la réussite
+                Item token = new Item("massomo token", "", null);
+                game.getPlayer().addItem(token);
+
                 current.removeItemByName("massomo");
                 return;
             }

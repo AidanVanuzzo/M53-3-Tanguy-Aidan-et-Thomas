@@ -320,6 +320,31 @@ public class Game {
                         player.getItemByName("red orb") != null) {
                         loc.completePuzzle(); // évite la réapparition du boss
                     }
+
+                    // Massomo à Bridge (disparaît si Wizard's Lair est déverrouillée)
+                    if (loc.getName().equalsIgnoreCase("Bridge") &&
+                        worldMap.getLocation(2, 0) != null &&
+                        !worldMap.getLocation(2, 0).isLocked()) {
+
+                        loc.removeItem("massomo");
+
+                        // On ajoute le message laissé par Massomo (s'il n'y est pas déjà)
+                        if (loc.getItemByName("[There is a message painted on the floor: Meet me in my tower and I will teach you the ultimate power.]") == null) {
+                            Item parchment = new Item(
+                                "[There is a message painted on the floor: Meet me in my tower and I will teach you the ultimate power.]",
+                                "",
+                                "Bridge"
+                            );
+                            loc.addItem(parchment);
+                        }
+                    }
+
+                    // Massomo (Wizard's Lair) — si on a déjà résolu ses énigmes
+                    if (loc.getName().equalsIgnoreCase("Wizard's Lair") &&
+                    player.getItemByName("massomo token") != null) {
+                    loc.removeItem("massomo");
+                    }
+                    
                 }
             }
     

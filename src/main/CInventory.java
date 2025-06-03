@@ -19,18 +19,25 @@ public class CInventory implements ICommand {
     @Override
     public void execute() {
         List<Item> items = game.getPlayer().getInventory();
-        if (items.isEmpty()) {
+
+        // Filtre : items visibles seulement
+        List<Item> visibleItems = items.stream()
+            .filter(item -> !item.getName().equalsIgnoreCase("massomo token"))
+            .toList();
+
+        if (visibleItems.isEmpty()) {
             System.out.println();
             System.out.println("Your inventory is empty.");
         } else {
             System.out.println();
             System.out.println("Your inventory:");
-            for (Item item : items) {
+            for (Item item : visibleItems) {
                 System.out.println();
                 System.out.println(" - " + item.getName());
             }
             System.out.println();
-            //Lance le menu automatiquement
+
+            // Lance le menu automatiquement
             interactiveMenu();
         }
     }
