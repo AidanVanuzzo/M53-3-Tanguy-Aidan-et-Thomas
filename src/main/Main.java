@@ -11,9 +11,9 @@ public class Main {
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.init();  // Gère le menu ici (load/new)
+        game.init();  // Save
         game.run();   // Lance le jeu
-        game.closeScanner();  // Ferme à la toute fin
+        game.closeScanner();  // Ferme le scanner à la fin
     }    
 
 }
