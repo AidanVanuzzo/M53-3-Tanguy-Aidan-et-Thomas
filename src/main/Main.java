@@ -3,10 +3,8 @@ package main;
 public class Main {
 
     /*
-    1) Debug (tester le jeu et tous cas interdits)
-    2) Améliorer la fluidité du texte de jeu autant que possible
-    3) Commenter tout le code du main
-    4) Rendu Rapport
+    1) Commenter le code du main
+    2) Rapport --> Rendu Cyberlearn
     */
 
     public static void main(String[] args) {

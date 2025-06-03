@@ -26,8 +26,8 @@ public class CSay implements ICommand {
 
             // === CHRIS Burger King ===
             if (itemName.equals("chris") && current.getName().equalsIgnoreCase("Burger King") && current.isPuzzleActive()) {
-                System.out.println("\nChris: Hello, traveler! Would you like to try one of my delicious Woopers? (yes/no)");
-                System.out.print("Your answer: ");
+                System.out.println("\nChris: Hello, traveler! Would you like to try one of my delicious Woopers?");
+                System.out.print("Your answer (yes/no): ");
                 String reply = scanner.nextLine().trim().toLowerCase();
 
 
@@ -75,7 +75,7 @@ public class CSay implements ICommand {
                     }
                     return;
                 } else {
-                    System.out.println("Chris: I didn’t understand your answer.");
+                    System.out.println("\nChris: I didn’t understand your answer.\n");
                     return;
                 }
             }
@@ -172,7 +172,7 @@ public class CSay implements ICommand {
 
             // === Crappi Crapo - Cave ===
             if (itemName.equals("crappi") && current.getName().equalsIgnoreCase("Cave") && current.isPuzzleActive()) {
-                System.out.println("\n[the animal lets out a chuckle...]\nCrappi Crapo: Hey Chef, it’s rough being a frog these days. I'm starving out here.");
+                System.out.println("\n[The animal lets out a chuckle...]\nCrappi Crapo: Hey Chef, it’s rough being a frog these days. I'm starving out here.");
                 System.out.println("Crappi Crapo: You know what? I’ll give you this key if you bring me something to eat.");
                 System.out.print("\nYour answer (yes/no): ");
                 String reply = scanner.nextLine().trim().toLowerCase();
@@ -219,7 +219,7 @@ public class CSay implements ICommand {
                 String name = item.getName().toLowerCase();
 
                 if (name.equals("tonton") || name.equals("massomo") || name.equals("chris")) {
-                    System.out.println("You talked with " + item.getName() + ".");
+                    System.out.println("\nYou talked with " + item.getName() + ".");
                 } else {
                     game.getPlayer().addItem(item);
                     System.out.println();
