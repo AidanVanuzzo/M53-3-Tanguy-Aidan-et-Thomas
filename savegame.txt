@@ -1,17 +1,17 @@
-position:2,0
-item:picture of tonton
+position:1,0
 item:VIP card
-item:crystal
+item:wooper
+item:clean pitchfork
 discovered:0,0
 unlocked:0,0
 puzzle:0,0
 discovered:1,0
 unlocked:1,0
 puzzle:1,0
-discovered:2,0
 unlocked:2,0
 discovered:0,1
 unlocked:0,1
+puzzle:0,1
 discovered:1,1
 unlocked:1,1
 puzzle:1,1
