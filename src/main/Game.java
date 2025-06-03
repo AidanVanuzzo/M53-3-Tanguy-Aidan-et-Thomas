@@ -143,7 +143,7 @@ public class Game {
         player.getItemByName("red orb") != null &&
         !target.getDescription().contains("Mom is waiting")) {
 
-        System.out.println("\n[Mom is waiting for you. Oh...the orb turns blue!]");
+        System.out.println("\n[Mom is waiting for you...Oh...the orb turns blue!]");
         System.out.println("[You hand her the orb, and mom uses her powerful mage abilities to restore peace to the world.]");
         System.out.println("[She makes you a hot chocolate, and you enjoy your well-deserved weekend.]\n");
 
