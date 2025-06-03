@@ -3,8 +3,8 @@ package main;
 public class Main {
 
     /*
-    1) Commenter le code du main
-    2) Rapport --> Rendu Cyberlearn
+    (Location > Teleport > WorldMap)
+    (Inventory > Game > Say)
     */
 
     public static void main(String[] args) {
