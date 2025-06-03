@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
 public class Main {
 
     /*
@@ -12,17 +10,10 @@ public class Main {
     */
 
     public static void main(String[] args) {
-    Game game = new Game();
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("\n\nDo you want to load the last save or start a new game? (load/new): \n\n");
-    String choice = scanner.nextLine().trim().toLowerCase();
-    
-
-    if (choice.equals("load")) {
-        game.setLoadRequested(true);
-    }
-
-    game.run();
-    }
+        Game game = new Game();
+        game.init();  // Gère le menu ici (load/new)
+        game.run();   // Lance le jeu
+        game.closeScanner();  // Ferme à la toute fin
+    }    
 
 }

@@ -327,6 +327,21 @@ public class Game {
             System.out.println("[Failed to load game state]");
             e.printStackTrace();
         }
-    }      
+    }
+
+    public void init() {
+        System.out.print("\n\nDo you want to load the last save or start a new game? (load/new): \n\n");
+        String choice = scanner.nextLine().trim().toLowerCase();
+    
+        if (choice.equals("load")) {
+            setLoadRequested(true);
+        }
+    }
+    
+    public void closeScanner() {
+        if (scanner != null) {
+            scanner.close();
+        }
+    }    
     
 }
