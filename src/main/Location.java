@@ -14,12 +14,13 @@ public class Location implements IPrintable {
     //Objets présents dans la zone
     private List<Item> items;
 
-    //PNJ et énigme associés à la zone
+    //PNJ, énigme(s) et Item associés à la zone
     private String npcName;
     private String npcIntro;
     private boolean puzzleActive;
     private Item rewardItem;
 
+    //Constructeur
     public Location(String name, String description) {
         this.name = name;
         this.description = description;
@@ -31,6 +32,8 @@ public class Location implements IPrintable {
         this.puzzleActive = false;
         this.rewardItem = null;
     }
+
+    //Getters, Setters, Retour de l'état (locked, discovered)
 
     public String getName() {
         return name;
@@ -56,7 +59,8 @@ public class Location implements IPrintable {
         this.locked = locked;
     }
 
-    //Gestion des objets
+    //Gestion des objets dans la zone
+
     public void addItem(Item item) {
         items.add(item);
     }
@@ -64,7 +68,7 @@ public class Location implements IPrintable {
     public List<Item> getItems() {
         return items;
     }
-
+    //Supprime un objet de la zone quand on le ramasse
     public Item removeItemByName(String name) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -75,7 +79,8 @@ public class Location implements IPrintable {
         return null;
     }
 
-    //Gestion du PNJ et de l'énigme
+    //Gestion des PNJ et de leurs énigmes avec Getter, état, etc.
+
     public void setNpcPuzzle(String npcName, String npcIntro, Item rewardItem) {
         this.npcName = npcName;
         this.npcIntro = npcIntro;
@@ -107,7 +112,7 @@ public class Location implements IPrintable {
         this.puzzleActive = false;
     }
 
-    //Méthodes d'affichage de la carte
+    //Méthodes d'affichage sur la carte d'une zone découverte
     @Override
     public String getPrintableString() {
         if (discovered) {
@@ -116,16 +121,13 @@ public class Location implements IPrintable {
         return "";
     }
 
+    //Affiche en grisé les zones trouvées mais vérouillées
     @Override
     public boolean isGrayedOut() {
         return locked || !discovered;
     }
 
-    //Save - retirer item
-    public void removeItem(String itemName) {
-    items.removeIf(item -> item.getName().equalsIgnoreCase(itemName));
-    }
-
+    //Récupérer un objet (pour inspect, use, look...)
     public Item getItemByName(String name) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -133,6 +135,11 @@ public class Location implements IPrintable {
             }
         }
         return null;
-    }    
+    }  
+
+    //Save - Retirer les Item déjà récupérés/interagis(PNJ)
+    public void removeItem(String itemName) {
+    items.removeIf(item -> item.getName().equalsIgnoreCase(itemName));
+    }  
 
 }
