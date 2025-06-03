@@ -184,7 +184,7 @@ public class Game {
 
                     target.completePuzzle(); // Évite que le boss réapparaisse
                 } else {
-                    System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.\n]");
+                    System.out.println("\n[Alberto struck you down with his sword. YOU ARE DEAD.]\n");
                     System.exit(0);
                 }
             } catch (java.util.concurrent.TimeoutException e) {

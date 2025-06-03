@@ -3,10 +3,10 @@ package main;
 public class Main {
 
     /*
-    +) Debug (tester le jeu et tous cas interdits)
-    +) Commenter tout le code du main
-    +) Améliorer la fluidité du texte de jeu autant que possible
-    --> Rendu Rapport
+    1) Debug (tester le jeu et tous cas interdits)
+    2) Améliorer la fluidité du texte de jeu autant que possible
+    3) Commenter tout le code du main
+    4) Rendu Rapport
     */
 
     public static void main(String[] args) {
