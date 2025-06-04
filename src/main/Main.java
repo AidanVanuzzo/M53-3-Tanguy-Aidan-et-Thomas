@@ -2,7 +2,7 @@ package main;
 
 public class Main {
 
-    /***(Inventory > Game > Say)***/
+    /***(Game > Say)***/
 
     public static void main(String[] args) {
         //Création d'une nouvelle partie
