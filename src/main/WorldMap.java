@@ -5,14 +5,19 @@ import java.util.Map;
 
 public class WorldMap {
 
+    //Tableau 2D pour la map
     private Location[][] map;
+    //Largeur
     private int est;
+    //Hauteur
     private int nord;
+    //Référence à l'instance actuelle du jeu
     private Game game;
 
     //Descriptions alternatives pour les zones verrouillées
     private Map<String, String> lockedDescriptions = new HashMap<>();
 
+    //Constructeur
     public WorldMap() {
         this.est = 3;
         this.nord = 3;
@@ -20,6 +25,7 @@ public class WorldMap {
         initializeMap();
     }
 
+    //Permet de lier une instance de Game à la carte
     public void setGame(Game game) {
         this.game = game;
     }
@@ -28,8 +34,9 @@ public class WorldMap {
         return this.game;
     }
 
+    //Initialise toutes les zones, objets et PNJ de la carte
     private void initializeMap() {
-        // === Création des zones ===
+        //=== Création des zones ===
         setLocation(0, 0, new Location("Bridge", "[A calm wooden bridge above the river.]"));
         setLocation(1, 0, new Location("Farm", "[A quiet farm with crops.]"));
         setLocation(2, 0, new Location("Cave", "[A mysterious cave.]"));
@@ -42,26 +49,26 @@ public class WorldMap {
         setLocation(1, 2, new Location("River", "[A relaxing flowing river.]"));
         setLocation(2, 2, new Location("Wizard's Lair", "[The tower of Massomo the great wizard.]"));
 
-        // === Zones verrouillées par défaut ===
+        //=== Zones verrouillées par défaut ===
         getLocation(0, 1).setLocked(true); // Burger King
         getLocation(2, 1).setLocked(true); // Castle
         getLocation(2, 2).setLocked(true); // Wizard's Lair
 
-        // === Descriptions alternatives ===
+        //=== Descriptions alternatives pour les zones verrouillées ===
         lockedDescriptions.put("Burger King", "[You try to enter, but the door is strangely sealed with a burger-shaped emblem.]\n");
         lockedDescriptions.put("Castle", "[The gates of Lord Alberto’s castle are locked tight. You’ll need a key.]");
         lockedDescriptions.put("Wizard's Lair", "[A magical barrier repels you. Perhaps the wizard is not home yet.]");
 
-        // === Zone de départ découverte ===
+        //=== Zone de départ ===
         getLocation(1, 1).setDiscovered(true); // House
 
-        // === Massomo, déverrouille Wizard's Lair ===
+        //=== Massomo, déverrouille Wizard's Lair ===
         getLocation(0, 0).addItem(new Item("massomo", "You see Massomo meditating above the river. His eyes open slowly when you approach.", "Wizard's Lair"));
 
-        // === Tonton Eleganza Market ===
+        //=== Tonton Eleganza Market ===
         getLocation(0, 2).addItem(new Item("tonton", "An elegant man in a turquoise silk suit holding a melon. He looks at you with flair.", "Market"));
 
-        // === VIP Card de Tonton ===
+        //=== VIP Card de Tonton ===
         Item vipCard = new Item("vip card", "\nThis shiny VIP card gives you access to unlimited burgers.", "Burger King");
 
         String tontonIntro = "\nTonton: Hello young man, how are you?\n" +
@@ -72,7 +79,7 @@ public class WorldMap {
 
         getLocation(0, 2).setNpcPuzzle("Tonton Eleganza", tontonIntro, vipCard);
 
-        // === Objets distracteurs ===
+        //=== Objets distracteurs ===
         Item farmJunk = new Item(
             "clean pitchfork",
             "Oddly shiny and completely clean. Nobody dares to touch it.",
@@ -87,11 +94,11 @@ public class WorldMap {
         );
         getLocation(1, 2).addItem(riverPhoto);
 
-        // === Massomo dans la Wizard's Lair (avec énigme)
+        //=== Massomo dans Wizard's Lair ===
         Item lairMassomo = new Item("massomo", "Massomo stands silently by his bookshelf. His eyes sparkle with ancient knowledge.", "Wizard's Lair");
         getLocation(2, 2).addItem(lairMassomo);
 
-        // === Chris au Burger King ===
+        //=== Chris au Burger King ===
         Item wooper = new Item(
             "wooper",
             "A Warm Juicy Wooper. It looks delicious.",
@@ -105,9 +112,9 @@ public class WorldMap {
         getLocation(0, 1).setNpcPuzzle("Chris", chrisIntro, wooper);
         getLocation(0, 1).addItem(new Item("chris", "A friendly cook with a paper hat and a spatula in hand.", "Burger King"));
         
-        // === Crappi Crapo dans la Cave ===
+        //=== Crappi Crapo dans la Cave ===
         Item crappi = new Item("crappi", "You see a big toad with golden rings and a chef’s hat. He croaks loudly.", "Cave");
-        getLocation(2, 0).addItem(crappi); // Ajout du PNJ visuel
+        getLocation(2, 0).addItem(crappi);
 
         Item goldKey = new Item("gold key", "A large golden key adorned with diamonds", "Castle");
         String crappiIntro = """
@@ -124,7 +131,7 @@ public class WorldMap {
             redOrb
         );
 
-        // === Objet spécial : Crystal (téléporteur)
+        //=== Objet spécial : Crystal (téléporteur)
         Item crystal = new Item(
             "crystal",
             "A magnificent, precious-looking crystal. It seems to exude a strange force.",
@@ -134,10 +141,12 @@ public class WorldMap {
 
     }
 
+    //Récupère les descriptions personnalisées pour les zone verrouillées
     public String getLockedDescription(String locationName) {
         return lockedDescriptions.getOrDefault(locationName, "You can’t go there yet.");
     }
 
+    //Place une zone à une coordonnée donnée dans la carte
     public void setLocation(int x, int y, Location location) {
         if (x >= 0 && x < est && y >= 0 && y < nord) {
             map[y][x] = location;
@@ -146,6 +155,7 @@ public class WorldMap {
         }
     }
 
+    //Récupère une zone à une coordonnée donnée
     public Location getLocation(int x, int y) {
         if (x >= 0 && x < est && y >= 0 && y < nord) {
             return map[y][x];
@@ -153,6 +163,7 @@ public class WorldMap {
         return null;
     }
 
+    //Récupère la carte complète
     public Location[][] getWorldMap() {
         return map;
     }
