@@ -1,10 +1,10 @@
-position:1,1
+position:2,1
+item:vip card
 item:picture of tonton
+item:gold key
 item:massomo token
 item:crystal
-item:vip card
-item:gold key
-item:clean pitchfork
+item:red orb
 discovered:0,0
 unlocked:0,0
 puzzle:0,0
@@ -22,6 +22,7 @@ unlocked:1,1
 puzzle:1,1
 discovered:2,1
 unlocked:2,1
+puzzle:2,1
 discovered:0,2
 unlocked:0,2
 puzzle:0,2
