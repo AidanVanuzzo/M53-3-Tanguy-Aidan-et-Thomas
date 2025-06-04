@@ -2,7 +2,7 @@ package main;
 
 public class Main {
 
-    /***(WorldMap > Inventory > Game > Say)***/
+    /***(Inventory > Game > Say)***/
 
     public static void main(String[] args) {
         //Création d'une nouvelle partie
