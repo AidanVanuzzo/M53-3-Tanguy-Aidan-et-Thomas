@@ -277,7 +277,6 @@ public class CSay implements ICommand {
                 }
 
             //Si le joueur entre une mauvaise saisie
-
             } else {
                 System.out.println("There is no such item or character here.\n");
             }
