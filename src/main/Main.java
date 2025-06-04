@@ -2,8 +2,6 @@ package main;
 
 public class Main {
 
-    /***(Game > Say)***/
-
     public static void main(String[] args) {
         //Création d'une nouvelle partie
         Game game = new Game();
