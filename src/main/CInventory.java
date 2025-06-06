@@ -97,7 +97,7 @@ public class CInventory implements ICommand {
                         } else {
                             System.out.println("\nThis object cannot be used here.\n");
                         }
-                    //=== VIP Card ===
+                    //=== Gold Key ===
                     } else if (item.getName().equalsIgnoreCase("gold key")) {
                         int x = game.getPlayerX();
                         int y = game.getPlayerY();
@@ -106,7 +106,7 @@ public class CInventory implements ICommand {
                         boolean isNearCastle =
                             (x == 1 && y == 1) || //House
                             (x == 2 && y == 0) || //Cave
-                            (x == 1 && y == 2);   //River
+                            (x == 2 && y == 2);   //River
                         //Affichage du texte d'ouverture et gestion des exceptions + Déverrouillage
                         Location castle = map.getLocation(2, 1);
                         if (isNearCastle) {
