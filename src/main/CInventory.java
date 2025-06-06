@@ -106,7 +106,7 @@ public class CInventory implements ICommand {
                         boolean isNearCastle =
                             (x == 1 && y == 1) || //House
                             (x == 2 && y == 0) || //Cave
-                            (x == 2 && y == 2);   //River
+                            (x == 2 && y == 2);   //Wizard
                         //Affichage du texte d'ouverture et gestion des exceptions + Déverrouillage
                         Location castle = map.getLocation(2, 1);
                         if (isNearCastle) {
